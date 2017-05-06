@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - 优客代购网</title>
+    <link rel="stylesheet" href="~/css/buttoncss.css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/index.css" rel="stylesheet">
+
+</head>
+<body>
+    <!--导航1-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 4;" role="navigation" id="header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="~/images/logo.png" style="position: fixed;left: -1%;top:10px;" />
+            </div>
+            <ul class="nav nav-pills" id="firstnav" style="font-size: 25px;float: right;">
+                <li class="marginleft"><button class="btn1"><span class="glyphicon glyphicon-user icon1"></span></button></li>
+                <li class="marginleft"><button class="btn1"><span class="glyphicon glyphicon-shopping-cart icon1"></span></button></li>
+                <li class="marginleft"><button class="btn1"><span class="glyphicon glyphicon-heart icon1"></span></button></li>
+            </ul>
+            <div style="float:right;margin-right:30px">
+                <button href="#" class="button  button-glow button-border button-rounded button-primary" style="" data-toggle="modal" data-target="#myModal">登录</button>
+                <button href="#" class="button button-glow button-border button-rounded button-primary" style="" data-toggle="modal" data-target="#myModa2">注册</button>
+            </div>
+        </div>
+    </nav>
+    <!--导航1结束-->
+    <!--导航2-->
+    <nav class="navbar navbar-default navbar-fixed-top" style="margin-top:50px;z-index: 4;" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse1">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul class="nav nav-pills" style="font-family: '楷体';font-size: 18px;">
+                    <li role="presentation" class="active"><a asp-action="index">首页</a></li>
+                    <li role="presentation"><a href="#">精选</a></li>
+                    <li role="presentation"><a href="#">服饰</a></li>
+                    <li role="presentation"><a href="#">美妆</a></li>
+                    <li role="presentation"><a href="#">鞋包</a></li>
+
+                    <div class="collapse navbar-collapse" id="example-navbar-collapse1">
+                        <ul class="nav nav-pills">
+                            <li role="presentation"><a href="#">居家</a></li>
+                            <li role="presentation"><a href="#">配饰</a></li>
+                            <li role="presentation"><a href="#">家纺</a></li>
+                            <li role="presentation"><a href="#">运动</a></li>
+                            <li role="presentation"><a href="#">美食</a></li>
+                            <li role="presentation"><a href="#">母婴儿童</a></li>
+                            <li role="presentation"><a href="#">数码家电</a></li>
+                            <li role="presentation" style="margin-top: 7px;"><input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入您想找的宝贝！"></li>
+                            <li role="presentation" style="margin-top: 6px;"><button href="#" class="btn button-glow button-border button-rounded button-primary">Go</button></li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--导航2结束-->
+    @RenderBody()
+    <!--底部申明开始-->
+    <div id="fooddiv" class="container-fluid" style="background-color: #242424;">
+        <div id="foodtop" class="container">
+            <div class="row" id="foodtop1">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        平台介绍：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        公司简介：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        加入我们：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                    <img src="~/images/erwei.jpg" width="30%" height="30%" style="margin:20px 30px;">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 40px;margin-bottom: 10px;">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="咨询或意见或建议！" style="width:60%;display: inline;">
+                    <button href="#" class="btn button-glow button-border button-rounded button-primary">发送</button>
+                </div>
+                <div class="col-md-5 col-sm-4 col-xs-12">
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <img src="~/images/tb1.png">
+                    <img src="~/images/tb2.png">
+                    <img src="~/images/tb3.png">
+                    <img src="~/images/tb4.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--底部申明结束-->
+    <!--版权申明开始-->
+    <div class="container-fluid" style="background-color: #444444;margin: 0;">
+        <div class="container">
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-4 col-sm-4 col-xs-12" style="border-bottom:1px solid #E0E0E0">
+                    <h3 class="hh1">
+                        Copyright © 版权 2017卖银开发团队，本公司保留一切版权！
+                    </h3>
+                </div>
+                <div class="col-md-5 col-sm-4 col-xs-12">
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <h3 class="hh1">
+                        本公司正招贤纳士，如对我公司有信心，请联系！
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--版权申明结束-->
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

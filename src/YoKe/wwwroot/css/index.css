@@ -1,0 +1,233 @@
+
+@media screen and (max-width: 770px){
+	#md-sm-container{
+		display: none;
+	}
+	#navright{
+		display: none;
+	}
+	#xm-container{
+		display:block;
+	}
+}
+@media screen and (max-width: 500px) {
+	#navright {
+		display: none;
+	}
+	#firstnav{
+		display: block;
+	}
+	.goodsdiv:hover{
+		border:none;
+	}
+	li:hover{
+	border-bottom:none;
+}
+}
+.navbar-collapse {
+	float: right;
+}
+
+#navright {
+	z-index: 5;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 36px;
+	height: 100%;
+	background-color: #444444;
+}
+#navrightuser{
+	margin-top: 400%;
+	width:100%;
+	height:36px;
+}
+.navrightdiv{
+	margin-top: 50%;
+	width:100%;
+	height:36px;
+}
+.taba {
+	font-family: "微软雅黑";
+	font-size: 18px;
+	color: #E0E0E0;
+}
+a{
+	color: black;
+	text-decoration: none;
+}
+a:hover {
+	color: rgb(255, 70, 78);
+	text-decoration: none;
+}
+a:visited{
+	text-decoration: none;
+}
+b {
+	margin: 0 8px;
+	display: inline-block;
+	height: 6px;
+	width: 6px;
+	border-radius: 6px;
+	background-color: #ff6767;
+	position: relative;
+	bottom: 4px;
+}
+.goodsdiv:hover{
+	border: 1px solid rgb(255, 70, 78);
+}
+h3{
+	color: rgb(255, 70, 78);
+	margin: 0;
+}
+#firstnav{
+	display: none;
+}
+.marginleft{
+	margin-left: 20px;
+}
+.btn1{
+	border: none;
+	background-color: #242424;
+}
+.btn2{
+	border:none;
+	border-left:1px solid #444444;
+	height: 100%;
+	width:100%;
+	background-color: #444444;
+}
+.icon1{
+	color: white;
+	margin-top:13px;
+}
+.tab1{
+	border-top:10px inset #242424;
+}
+.tab2{
+	margin: 10px 0;
+}
+.imgstyle{
+	width: 100%;
+	height:100%;
+}
+
+#foodtop{
+	margin-top:40px;
+	margin-bottom:40px
+}
+#foodtop1{
+	text-align: left;
+	border-bottom:1px solid #444444 ;
+}
+.h21{
+	color: #E0E0E0;
+	font-size: 16px;
+	font-family: '楷体';
+}
+.hh1{
+	color: #E0E0E0;
+	font-size: 14px;
+	font-family: '楷体';
+}
+li:hover{
+	border-bottom:1px solid red;
+}
+.titleh{
+	font-family: '楷体';
+	color: #E02F2F;
+	font-size: 17px;
+	font-weight: bold;
+}
+.titleh1{
+	font-family: '微软雅黑';
+	color: grey;;
+	font-size: 13px;
+	text-align: center;
+
+}
+.titleh:hover{
+	color: #E02F2F;
+}
+#usernavleft{
+	float: left;
+	border: 1px solid #E0E0E0; 
+	margin-left: -15px;
+}
+#usercontain{
+	
+}
+#sectext{
+	border:1px solid #E0E0E0 ;
+	width:100%;
+	padding:3px;
+}
+.mynav{
+	margin-top: 15px;
+	font-weight: bold;
+	
+}
+.mynav li{
+	float: left;
+	margin-left: 1%;
+	border-right: 1px solid #E0E0E0;
+	
+}
+.mynav li.active{
+	border-bottom:2px solid red ;
+}
+.mynav li:hover{
+	border-bottom: none;
+	
+}
+.mynav li a{
+	color: grey;
+}
+.mynav a:hover{
+	color: red;
+	background-color: white;
+}
+.textright{
+	text-align: right;
+	color: gray;
+}
+.textcenter{
+	text-align: center;
+	color: gray;
+}
+.textbold{
+	font-weight: bold;
+}
+.margintop20{
+	margin-top:20px;
+}
+.badgestyle{
+	background-color: rgb(255, 70, 78);
+	color: white;
+	margin-left:3px ;
+}
+.panel-user-xs{
+	background-color: white;
+	font-size: 20px;
+	font-family: '楷体';
+}
+.bordernone{
+	border-bottom:none;
+}
+.class-xm-container{
+	display: none;
+}
+.spancss{
+	font-size: 18px;
+	color: rgb(255, 70, 78);
+}
+.cartbtn{
+	border:none;
+}
+.messagetext{
+	margin-top:20px;
+}
+.backwhite{
+	background-color: white;
+	color: #000000;
+}

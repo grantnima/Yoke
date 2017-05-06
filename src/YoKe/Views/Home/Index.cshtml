@@ -1,0 +1,492 @@
+﻿@{ ViewData["title"] = "首页";}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>优客代购网</title>
+    <link rel="stylesheet" href="~/css/buttoncss.css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="~/css/index.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <!--导航1-->
+    @*<nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 4;" role="navigation" id="header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="img/LOGO.png" style="position: fixed;left: -1%;top:10px" />
+            </div>
+            <div style="float:right;margin-right:30px">
+                <button href="#" class="button  button-glow button-border button-rounded button-primary" style="" data-toggle="modal" data-target="#myModal">登录</button>
+                <button href="#" class="button button-glow button-border button-rounded button-primary" style="" data-toggle="modal" data-target="#myModa2">注册</button>
+            </div>
+        </div>
+    </nav>*@
+    <!--导航1结束-->
+    <!--导航2-->
+    @*<nav class="navbar navbar-default navbar-fixed-top" style="margin-top:50px;z-index: 4;" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse1">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse1" style="font-family: '楷体';font-size: 18px;">
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active"><a asp-action="index">首页</a></li>
+                        <li role="presentation"><a href="list/fushi.html">服饰</a></li>
+                        <li role="presentation"><a href="list/meishi.html">美妆</a></li>
+                        <li role="presentation"><a href="list/xiebao.html">鞋包</a></li>
+                        <li role="presentation"><a href="list/jujia.html">居家</a></li>
+                        <li role="presentation"><a href="list/peishi.html">配饰</a></li>
+                        <li role="presentation"><a href="list/jiafang.html">家纺</a></li>
+                        <li role="presentation"><a href="list/yundong.html">运动</a></li>
+                        <li role="presentation"><a href="list/meishi.html">美食</a></li>
+                        <li role="presentation"><a href="list/muyingertong.html">母婴儿童</a></li>
+                        <li role="presentation"><a href="list/shumajiadian.html">数码家电</a></li>*@
+                        <!--<li role="presentation" style="margin-top: 7px;"><input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入您想找的宝贝！"></li>
+                        <li role="presentation" style="margin-top: 6px;"><button href="list/serch.html" class="btn button-glow button-border button-rounded button-primary">Go</button></li>-->
+                    @*</ul>
+                </div>
+            </div>
+         </div>
+    </nav>*@
+    <!--导航2结束-->
+    <!--侧边导航开始-->
+    <div id="navright" class="hidden-xs">
+        <!--侧边导航user开始-->
+        <div id="navrightuser">
+            <a asp-action="PersonalCenter"><button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2"><span class="glyphicon glyphicon-user" style="color: white;"></span></button></a>
+        </div>
+        <div id="navbag" style="margin-top: 100%;color: white;">
+            <button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" data-toggle="modal" data-target="#myModa3" onmouseout="this.style.backgroundColor='#444444';" class="btn2">
+                <span class="glyphicon glyphicon-shopping-cart" style="color: white;"></span>
+                购物车
+                <span class="badge">4</span>
+            </button>
+        </div>
+        <div id="navrightlike" class="navrightdiv">
+            <button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2 " data-toggle="modal" data-target="#myModa4"><span class="glyphicon glyphicon-heart" style="color: white;"></span></button>
+        </div>
+        <div id="navrightimg" style="margin-top: 400%;width:100%;height:98px">
+            <button style="border:none;height: 100%;width:100%;background-image: url(~/images/navrightimg.png);"></button>
+        </div>
+        <div id="navrightfoot" class="navrightdiv">
+            <button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button>
+        </div>
+        <!--侧边导航user结束-->
+    </div>
+    <!--侧边导航结束-->
+    <!--巨幕开始-->
+    <div class="jumbotron" style="z-index:5;margin-top: 100px;height: 400px;background-image: url(~/images/background.jpg);background-repeat: no-repeat; background-size:100% 100%; ">
+        <div class="container" style="float: right;width: 40%;">
+            <h1>Hello, world!</h1>
+            <p>...</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Hello,world!</a></p>
+        </div>
+    </div>
+    <!--巨幕结束-->
+    <!--标签开始-->
+    <div style="background-color: #2E2E2E;margin-top: -30px;">
+        <div class="container" style="text-align: center;">
+            <div class="row" style="padding: 10px 0;">
+                <div class="col-md-4 col-xs-4 tabdiv action tab1">
+                    <a role="tab" class="action taba" data-toggle="tab" href="#today1">今日特价</a>
+                </div>
+                <div class="col-md-4 col-xs-4 tabdiv tab1">
+                    <a role="tab" class="taba" data-toggle="tab" href="#today2">9.9包邮</a>
+                </div>
+                <div class="col-md-4 col-xs-4 tabdiv tab1">
+                    <a role="tab" class="taba" data-toggle="tab" href="#today3">今日上新</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="myTabContent" class="tab-content container-fluid" style="background-color: #242424;">
+
+        <div class="tab-pane fade in active container" id="today1">
+            <div class="row" style="margin: 30px 0;">
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade container " id="today2">
+            <div class="row" style="margin: 30px 0;">
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade container " id="today3">
+            <div class="row" style="margin: 30px 0;">
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
+                    <img src="~/images/goods.jpg" class="imgstyle">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--标签结束-->
+    <!--热销推荐开始-->
+    <div class="container" style="border-bottom:1px solid red;margin-top:5%">
+        <h3 style="margin-left: -15px;font-family: '楷体';">热销推荐<b></b></h3>
+    </div>
+    <div class="container" style="margin-top:30px;">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <a asp-action="Message"><img src="~/images/goods.jpg" class="imgstyle"></a>
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding: 0;">
+        <div class="row" style="margin:  0;">
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding: 0;">
+        <div class="row" style="margin:  0;">
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding: 0;">
+        <div class="row" style="margin:  0;">
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <img src="~/images/goods.jpg" class="imgstyle">
+                <h3>¥19.9</h3>
+            </div>
+        </div>
+        <nav aria-label="Page navigation " style="width: 320px;margin: 0 auto;">
+            <ul class="pagination pagination-lg">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!--热销推荐结束-->
+    <!--底部申明开始-->
+    @*<div id="fooddiv" class="container-fluid" style="background-color: #242424;">
+        <div id="foodtop" class="container">
+            <div class="row" id="foodtop1">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        平台介绍：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        公司简介：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        加入我们：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                    <img src="img/erwei.jpg" width="30%" height="30%" style="margin:20px 30px;">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 40px;margin-bottom: 10px;">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="咨询或意见或建议！" style="width:60%;display: inline;">
+                    <button href="#" class="btn button-glow button-border button-rounded button-primary">发送</button>
+                </div>
+                <div class="col-md-5 col-sm-4 col-xs-12">
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <img src="img/tb1.PNG">
+                    <img src="img/tb2.PNG">
+                    <img src="img/tb3.PNG">
+                    <img src="img/tb4.PNG">
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!--底部申明结束-->
+    <!--版权申明开始-->
+    @*<div class="container-fluid" style="background-color: #444444;margin: 0;">
+        <div class="container">
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-4 col-sm-4 col-xs-12" style="border-bottom:1px solid #E0E0E0">
+                    <h3 class="hh1">
+                        Copyright © 版权 2017卖银开发团队，本公司保留一切版权！
+                    </h3>
+                </div>
+                <div class="col-md-5 col-sm-4 col-xs-12">
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <h3 class="hh1">
+                        本公司正招贤纳士，如对我公司有信心，请联系！
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!--版权申明结束-->
+    <!-- Modal -->
+    <!-- 登录注册Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">欢迎登录</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="post" role="form" action="register.php?act=login">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">手机号:</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><span class="glyphicon glyphicon-phone"></span></span>
+                                    <input type="text" class="form-control has-success" name="phonelogintext" placeholder="手机号" id="phonelogintext" onclick="phonetext1()">
+                                </div>
+                                <p class="bg-danger" id="phoneloginp"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">密码:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control passwordtext" name="passlogintext" id="passlogintext" placeholder="Password" onclick="passtext1()">
+                                <p class="bg-danger" id="passloginp"></p>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="submitlogin">登录</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+  </div>
+    <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">欢迎注册</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" method="post" action="register.php?act=register">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">手机号:</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><span class="glyphicon glyphicon-phone"></span></span>
+                                    <input type="text" class="form-control has-success" name="phonetext" placeholder="手机号" id="phonetext" onclick="phonetext1()">
+                                </div>
+                                <p class="bg-danger" id="phonep"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">密码:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control passwordtext" name="passtext" id="passtext" placeholder="Password" onclick="passtext1()">
+                                <p class="bg-danger" id="passp"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">确认密码:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control passwordtext" name="wordtext" id="wordtext" placeholder="Password" onclick="wordtext1()">
+                                <p class="bg-danger" id="wordp"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">邮箱:</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><span class="glyphicon glyphicon-envelope"></span></span>
+                                    <input type="text" class="form-control" placeholder="邮箱" name="emailtext" id="emailtext" onclick="emailtext1()">
+                                    <div id="dropdown" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <ul>
+                                            <li class="on">请选择邮箱类型</li>
+                                            <li role="presentation">@@qq.com</li>
+                                            <li role="presentation">@@163.com</li>
+                                            <li role="presentation">@@126.com</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="bg-danger" id="emailp"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="submitregister">注册</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <!-- 登录注册Modal结束 -->
+    <!--购物车Modal开始-->
+    <div class="modal fade" id="myModa3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">购物车</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-md-1 col-sm-1"><input type="checkbox" value="option1"></div>
+                        <div class="col-md-3 col-sm-3"><img src="~/images/fushi.jpg" width="100%"></div>
+                        <div class="col-md-3 col-sm-3 pannel-body-css1">春季新款男士低帮休闲鞋<br>颜色:<span class="spancss textbold">大红</span><br>尺码:<span class="spancss textbold">42</span></div>
+                        <div class="col-md-3 col-sm-3" style="color: red;"><button class="cartbtn" id="carbtnj" onclick="cartsjian()">-</button><input type="text" style="width: 30px;text-align: center;" value="1" id="carttext"><button class="cartbtn" id="carbtna" onclick="cartsjia()">+</button></div>
+                        <div class="col-md-2 col-sm-2 textbold" style="color: red;font-size: 18px;">¥98</div>
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-3 pannel-body-css1"><input type="checkbox" value="option1">全选</div>
+                        <div class="col-xs-4 pannel-body-css1" style="margin-top:3px"><a href="#">批量删除</a></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submitlogin">结算</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--购物车Modal结束-->
+    <!--收藏夹Modal开始-->
+    <div class="modal fade" id="myModa4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">收藏夹</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-md-3 col-sm-3"><img src="~/images/fushi.jpg" width="100%"></div>
+                        <div class="col-md-5 col-sm-5 col-md-offset-1 col-sm-offset-1 pannel-body-css" style="font-size: 18px;line-height: 1em;">春季新款男士低帮休闲鞋<br><h5 style="margin-top: 20%;color: red;font-size: 18px;">¥148</h5></div>
+                        <button href="#" class="col-md-2 col-sm-2 button button-glow button-border button-rounded button-primary" style="">删除</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submitlogin">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--收藏夹Modal结束-->
+    <script src="jq/jquery-3.1.0.js"></script>
+    <script src="bootstrap-3.3.0/dist/js/bootstrap.js"></script>
+    <script src="~/js/indext.js"></script>
+</body>
+</html>

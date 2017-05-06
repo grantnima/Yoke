@@ -1,0 +1,1228 @@
+﻿@{ ViewData["title"] = "个人中心";}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="~/css/buttoncss.css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="~/css/index.css" rel="stylesheet">
+    
+</head>
+<body>
+    <!--导航1-->
+    @*<nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 4;border-bottom: none;" role="navigation" id="header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="img/LOGO.png" style="position: fixed;left: -1%;top:10px" />
+            </div>
+
+        </div>
+    </nav>*@
+    <!--导航1结束-->
+    <!--侧边导航开始-->
+    <div id="navright" class="hidden-xs">
+        <!--侧边导航user开始-->
+        <div id="navrightuser">
+            <button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2"><span class="glyphicon glyphicon-user" style="color: white;"></span></button>
+        </div>
+        <div id="navbag" style="margin-top: 100%;color: white;">
+            <button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2" data-toggle="modal" data-target="#myModa3">
+                <span class="glyphicon glyphicon-shopping-cart" style="color: white;"></span>
+                购物车
+                <span class="badge">4</span>
+            </button>
+        </div>
+        <div id="navrightlike" class="navrightdiv">
+            <button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2 " data-toggle="modal" data-target="#myModa4"><span class="glyphicon glyphicon-heart" style="color: white;"></span></button>
+        </div>
+        <div id="navrightimg" style="margin-top: 400%;width:100%;height:98px">
+            <button style="border:none;height: 100%;width:100%;background-image: url(img/navrightimg.png);"></button>
+        </div>
+        <div id="navrightfoot" class="navrightdiv">
+            <button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button>
+        </div>
+
+
+    </div>
+    <div class="container hidden-xs" style="margin-top: 50px;" id="md-sm-container">
+        <div class="row">
+            <div id="usernavleft" class="col-md-2 col-sm-2">
+                <!--标签导航开始-->
+                <h1 class="titleh1" style="font-weight: bold;">那天๓淘宝科技 <span class="badge" style="color: white;background-color: orange;">Z</span></h1>
+                <hr>
+                <h1 class="titleh">我的订单</h1>
+                <h1 class="titleh1"><a role="tab" class="action" data-toggle="tab" href="#user-tab1">购物订单</a></h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab2">销售订单</a></h1>
+                <hr>
+                <h1 class="titleh">个人发布</h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab3">发布任务</a></h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab4">发布商品</a></h1>
+                <hr>
+                <h1 class="titleh">个人信息</h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab5">我的发布</a></h1>
+                <!--<h1 class="titleh1"><a role="tab" class="  " data-toggle="tab" href="#user-tab6">我的消息<span class="badge badgestyle" >4</span></a></h1>-->
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab7"><span class="glyphicon glyphicon-shopping-cart" style="color: rgb(255, 70, 78);"></span>购物车<span class="badge badgestyle">4</span></a></h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab8"><span class="glyphicon glyphicon-heart" style="color: rgb(255, 70, 78);"></span>收藏夹<span class="badge badgestyle">3</span></a></h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab9">我的评价</a></h1>
+                <hr>
+                <h1 class="titleh">账户设置</h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab10">基本资料</a></h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab11">收货地址</a></h1>
+                <hr>
+            </div>
+            <!--标签内容页开始-->
+            <div id="usercontain" class="col-md-10 col-sm-10">
+                <div class="tab-content">
+                    <!--购物订单标签开始-->
+                    <div class="tab-pane fade in active " id="user-tab1">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 我的订单>购物订单</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <ul class="nav mynav" id="nav-lab1">
+                            <li role="presentation" class="active"><a href="#user-tab1-tab1" aria-controls="home" role="tab" data-toggle="tab">全部订单</a></li>
+                            <li role="presentation"><a href="#user-tab1-tab2" aria-controls="home" role="tab" data-toggle="tab">待付款</a></li>
+                            <li role="presentation"><a href="#user-tab1-tab3" aria-controls="home" role="tab" data-toggle="tab">待发货</a></li>
+                            <li role="presentation"><a href="#user-tab1-tab4" aria-controls="home" role="tab" data-toggle="tab">待收货</a></li>
+                            <li role="presentation"><a href="#user-tab1-tab5" aria-controls="home" role="tab" data-toggle="tab">待评价</a></li>
+                            <li role="presentation"><a href="#user-tab1-tab6" aria-controls="home" role="tab" data-toggle="tab">退款售后</a></li>
+                            <li role="presentation"><a href="#user-tab1-tab7" aria-controls="home" role="tab" data-toggle="tab">销售</a></li>
+                        </ul>
+                        <div class="row" style="margin-top: 10px;margin-left: 10px;">
+                            <input type="text" class="col-md-4 col-sm-6" placeholder="输入商品名称或订单编号！">
+                            <button class="col-md-2 col-sm-2" style="height: 26px;background-color: whitesmoke;border: 1px solid #E0E0E0;font-family: '楷体';">订单搜索</button>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 textcenter textbold">商品</div>
+                            <div class="col-md-1 col-sm-1 textcenter textbold">单价</div>
+                            <div class="col-md-1 col-sm-1 textcenter textbold">数量</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">商品操作</div>
+                            <div class="col-md-1 col-sm-1 textcenter textbold">实付</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">交易状态</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">操作</div>
+                        </div>
+                        <!--user-tab1-tab-->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="user-tab1-tab1">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">确认收货</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab1-tab1--end-->
+                            <!--user-tab1-tab2---->
+                            <div role="tabpanel" class="tab-pane" id="user-tab1-tab2">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待付款<br>订单详情</div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">付款</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">取消订单</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab1-tab2--end-->
+                            <!--user-tab1-tab3---->
+                            <div role="tabpanel" class="tab-pane" id="user-tab1-tab3">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待发货<br>订单详情</div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab1-tab3--end-->
+                            <!--user-tab1-tab4---->
+                            <div role="tabpanel" class="tab-pane" id="user-tab1-tab4">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">确认收货</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab1-tab4--end-->
+                            <!--user-tab1-tab5---->
+                            <div role="tabpanel" class="tab-pane" id="user-tab1-tab5">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待评价<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">评价</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab1-tab5--end-->
+                            <!--user-tab1-tab6---->
+                            <div role="tabpanel" class="tab-pane" id="user-tab1-tab6">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待客服收货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">取消</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab1-tab6--end-->
+                            <!--user-tab1-tab7---->
+                            <div role="tabpanel" class="tab-pane" id="user-tab1-tab7">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">确认收货</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab1-tab7--end-->
+                        </div>
+
+                    </div>
+                    <!--购物订单标签结束-->
+                    <!--销售订单标签开始-->
+                    <div class="tab-pane fade" id="user-tab2">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 我的订单>销售订单</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <ul class="nav mynav" id="nav-lab2">
+                            <li role="presentation" class="active"><a href="#user-tab2-tab1" aria-controls="home" role="tab" data-toggle="tab">全部订单</a></li>
+                            <li role="presentation"><a href="#user-tab2-tab2" aria-controls="home" role="tab" data-toggle="tab">待付款</a></li>
+                            <li role="presentation"><a href="#user-tab2-tab3" aria-controls="home" role="tab" data-toggle="tab">待发货</a></li>
+                            <li role="presentation"><a href="#user-tab2-tab4" aria-controls="home" role="tab" data-toggle="tab">待收货</a></li>
+                            <li role="presentation"><a href="#user-tab2-tab5" aria-controls="home" role="tab" data-toggle="tab">待评价</a></li>
+                            <li role="presentation"><a href="#user-tab2-tab6" aria-controls="home" role="tab" data-toggle="tab">退款售后</a></li>
+                            <li role="presentation"><a href="#user-tab2-tab7" aria-controls="home" role="tab" data-toggle="tab">销售</a></li>
+                        </ul>
+                        <div class="row" style="margin-top: 10px;margin-left: 10px;">
+                            <input type="text" class="col-md-4 col-sm-6" placeholder="输入商品名称或订单编号！">
+                            <button class="col-md-2 col-sm-2" style="height: 26px;background-color: whitesmoke;border: 1px solid #E0E0E0;font-family: '楷体';">订单搜索</button>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 textcenter textbold">商品</div>
+                            <div class="col-md-1 col-sm-1 textcenter textbold">单价</div>
+                            <div class="col-md-1 col-sm-1 textcenter textbold">数量</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">商品操作</div>
+                            <div class="col-md-1 col-sm-1 textcenter textbold">实付</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">交易状态</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">操作</div>
+                        </div>
+                        <div class="tab-content">
+                            <!--user-tab2-1-->
+                            <div role="tabpanel" class="tab-pane fade in active" id="user-tab2-tab1">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">确认收货</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab2-1--end-->
+                            <!--user-tab2-2-->
+                            <div role="tabpanel" class="tab-pane fade " id="user-tab2-tab2">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">代付款<br>订单详情<br></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">修改价格</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">备注</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab2-2--end-->
+                            <!--user-tab2-3-->
+                            <div role="tabpanel" class="tab-pane fade " id="user-tab2-tab3">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">已发货</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">备注</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab2-3--end-->
+                            <!--user-tab2-4-->
+                            <div role="tabpanel" class="tab-pane fade " id="user-tab2-tab4">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待收货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">备注</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab2-4--end-->
+                            <!--user-tab2-5-->
+                            <div role="tabpanel" class="tab-pane fade " id="user-tab2-tab5">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待评价<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">评价</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab2-5--end-->
+                            <!--user-tab2-6-->
+                            <div role="tabpanel" class="tab-pane fade " id="user-tab2-tab6">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">等待售后<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">完成</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">备注</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab2-6--end-->
+                            <!--user-tab2-7-->
+                            <div role="tabpanel" class="tab-pane fade " id="user-tab2-tab7">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">修改价格</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">备注</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--user-tab2-7--end-->
+                        </div>
+                    </div>
+                    <!--销售订单标签结束-->
+                    <!--发布任务标签开始-->
+                    <div class="tab-pane fade " id="user-tab3">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人发布>发布任务</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <form class="form-horizontal" role="form" method="post" action="register.php?act=adddemo" enctype="multipart/form-data" style="margin: 20px 0;">
+                            <!--图片上传-->
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
+                                            <img id="preview" src="~/images/fushi.jpg" width="150" height="180" style="display: block; width: 150px; height: 180px;">
+                                            <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
+                                                <input type="file" name="photoimg" id="photoimg" style="width:150px; opacity: 0;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--图片上传结束-->
+                            <!--任务详情-->
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 col-md-5 control-label">品牌：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <input type="text" class="form-control" name="key1" id="key1" placeholder="品牌">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 control-label">产地：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="产地">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 col-md-5 control-label">类别：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <select class="form-control" name="commission" id="commission">
+                                                <option selected="selected" value="3">化妆品</option>
+                                                <option value="4">服饰</option>
+                                                <option value="5">箱包</option>
+                                                <option value="6">居家</option>
+                                                <option value="7">配饰</option>
+                                                <option value="8">数码电子</option>
+                                                <option value="9">运动</option>
+                                                <option value="10">母婴儿童</option>
+                                                <option value="11">家纺</option>
+                                                <option value="12">美食</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 control-label">商品名称：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="商品名称">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 control-label">备注：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="备注">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 control-label">出价：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="出价（RMB）">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 col-md-5 control-label">收货地址：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <select class="form-control" name="commission" id="commission">
+                                                <option selected="selected" value="3">收货地址1</option>
+                                                <option value="4">收货地址2</option>
+                                                <option value="5">收货地址3</option>
+                                                <option value="6">收货地址4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 col-md-5 control-label">支付方式：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <select class="form-control" name="commission" id="commission">
+                                                <option value="3">支付宝支付</option>
+                                                <option value="4">微信支付</option>
+                                                <option selected="selected" value="5">货到付款</option>
+                                                <option value="6">其他</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 col-md-5 control-label">购买数量：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <select class="form-control" name="commission" id="commission">
+                                                <option selected="selected" value="3">1</option>
+                                                <option value="4">2</option>
+                                                <option value="5">3</option>
+                                                <option value="6">4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3  col-sm-4 col-md-offset-5 col-sm-offset-2">
+                                    <button type="submit" class="button button-glow button-border button-rounded button-primary " id="submitregister">发布任务</button>
+                                </div>
+                                <hr>
+                            </div>
+                            <!--任务详情结束-->
+                        </form>
+                    </div>
+                    <!--发布任务标签结束-->
+                    <!--发布商品标签开始-->
+                    <div class="tab-pane fade " id="user-tab4">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人发布>发布商品</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <form class="form-horizontal" role="form" method="post" action="register.php?act=adddemo" enctype="multipart/form-data" style="margin: 20px 0;">
+                            <!--图片上传-->
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
+                                            <img id="preview" src="~/images/fushi.jpg" width="150" height="180" style="display: block; width: 150px; height: 180px;">
+                                            <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
+                                                <input type="file" name="photoimg" id="photoimg" style="width:150px; opacity: 0;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--图片上传结束-->
+                            <!--任务详情-->
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-2 col-md-2 control-label ">关键字：</label>
+                                        <div class="col-sm-8 col-md-8">
+                                            <input type="text" class="form-control" name="key1" id="key1" placeholder="关键字">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-2 col-md-2 control-label ">商品描述：</label>
+                                        <div class="col-sm-8 col-md-8">
+                                            <textarea class="form-control" rows="6"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 col-md-5 control-label">品牌：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <input type="text" class="form-control" name="key1" id="key1" placeholder="品牌">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 control-label">产地：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="产地">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 col-md-5 control-label">类别：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <select class="form-control" name="commission" id="commission">
+                                                <option selected="selected" value="3">化妆品</option>
+                                                <option value="4">服饰</option>
+                                                <option value="5">箱包</option>
+                                                <option value="6">居家</option>
+                                                <option value="7">配饰</option>
+                                                <option value="8">数码电子</option>
+                                                <option value="9">运动</option>
+                                                <option value="10">母婴儿童</option>
+                                                <option value="11">家纺</option>
+                                                <option value="12">美食</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 control-label">售价：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="单位：RMB">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 control-label">库存量：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="key2" id="key2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4  col-sm-6">
+                                    <div class="form-group">
+                                        <label for="input" class="col-sm-5 col-md-5 control-label">发货地：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <select class="form-control" name="commission" id="commission">
+                                                <option selected="selected" value="3">1</option>
+                                                <option value="4">2</option>
+                                                <option value="5">3</option>
+                                                <option value="6">4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3  col-sm-4 col-md-offset-5 col-sm-offset-2">
+                                    <button type="submit" class="button button-glow button-border button-rounded button-primary " id="submitregister">发布商品</button>
+                                </div>
+                                <hr>
+                            </div>
+                            <!--任务详情结束-->
+
+                        </form>
+                    </div>
+                    <!--发布商品标签结束-->
+                    <!--我的发布标签开始-->
+                    <div class="tab-pane fade " id="user-tab5">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人信息>我的发布</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <ul class="nav mynav" id="nav-lab2">
+                            <li role="presentation" class="active"><a href="#user-tab5-tab1" aria-controls="home" role="tab" data-toggle="tab">商品</a></li>
+                            <li role="presentation"><a href="#user-tab5-tab2" aria-controls="home" role="tab" data-toggle="tab">代购请求</a></li>
+                        </ul>
+                        <div class="row" style="margin-top: 10px;margin-left: 10px;">
+                            <input type="text" class="col-md-4 col-sm-6" placeholder="输入商品名称或订单编号！">
+                            <button class="col-md-2 col-sm-2" style="height: 26px;background-color: whitesmoke;border: 1px solid #E0E0E0;font-family: '楷体';">订单搜索</button>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 textcenter textbold">商品</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">关键字</div>
+                            <div class="col-md-1 col-sm-1 textcenter textbold">库存</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">销售量</div>
+                            <div class="col-md-1 col-sm-1 textcenter textbold">售价</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">好评率</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">操作</div>
+                        </div>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="user-tab5-tab1">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">商品编号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>置顶</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">999</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">99</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;"><a href="#" style="color: orange;">98%</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">查看详情</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">下架商品</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade " id="user-tab5-tab2">
+                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
+                                </div>
+                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                    <div class="col-md-2 col-sm-2  textbold margintop20">
+                                        <img src="~/images/fushi.jpg" width="100px">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">泰国</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已接受<br>广东珠海<br><a href="#" style="color: orange;">查看物流</a></div>
+                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">删除请求</button>
+                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">确认完成</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--我的发布发布标签结束-->
+                    <!--我的消息标签开始-->
+                    <div class="tab-pane fade " id="user-tab6">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人信息>我的发布</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                    </div>
+                    <!--我的消息标签结束-->
+                    <!--购物车标签开始-->
+                    <div class="tab-pane fade" id="user-tab7">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人信息>购物车</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 textcenter textbold"> <input type="checkbox" value="option1">全选</div>
+                            <div class="col-md-5 col-sm-5 textcenter textbold">商品</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">数量</div>
+                            <div class="col-md-3 col-sm-3 textcenter textbold">操作</div>
+                        </div>
+                        <div class="row" style="margin-left: 10px;margin-top: 20px;border: 1px solid #E0E0E0;height: 150px;">
+                            <div class="col-md-3 col-sm-3   margintop20">
+                                <input type="checkbox" value="option1"><img src="~/images/fushi.jpg" width="100px">
+                            </div>
+                            <div class="col-md-2 col-sm-2  margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                            <div class="col-md-2 col-sm-2   textbold margintop20">颜色: RB/9953/兰色<br>尺码: 42</div>
+                            <div class="col-md-2 col-sm-3  textcenter textbold " style="height: 100%;padding-top:20px;border-top:none;border-bottom:none;"><button class="cartbtn" id="carbtnj" onclick="cartsjian()">-</button><input type="text" style="width: 30px;text-align: center;" value="1" id="carttext"><button class="cartbtn" id="carbtna" onclick="cartsjia()">+</button><br><h1 style="font-size: 18px;color: red;margin-top:20px ;">¥98</h1></div>
+                            <div class="col-md-3 col-sm-2  text-center " style="line-height:2em;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                <a href="#">删除</a><br><a href="#">移入收藏夹</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 textcenter textbold"> <input type="checkbox" value="option1">全选</div>
+                            <div class="col-md-3 col-sm-2  "><a href="#">批量删除</a></div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">共计<span style="color: rgb(255, 70, 78);font-size: 20px;">2</span>件</div>
+                            <div class="col-md-3 col-sm-3  textbold">总计（不含运费）:<span style="color: rgb(255, 70, 78);font-size: 20px;">98</span></div>
+                            <div class="col-md-2 col-sm-3"><button href="#" class="button button-glow button-border button-rounded button-primary">结算</button></div>
+                        </div>
+                        <hr>
+                    </div>
+                    <!--购物车标签结束-->
+                    <!--我的收藏标签开始-->
+                    <div class="tab-pane fade" id="user-tab8">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人信息>收藏夹</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                                <img src="~/images/fushi.jpg" class="imgstyle">
+                                <h5><input type="checkbox" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h5>
+                                <h3>¥19.9</h3>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                                <img src="~/images/fushi.jpg" class="imgstyle">
+                                <h5><input type="checkbox" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h5>
+                                <h3>¥19.9</h3>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                                <img src="~/images/fushi.jpg" class="imgstyle">
+                                <h5><input type="checkbox" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h5>
+                                <h3>¥19.9</h3>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                                <img src="~/images/fushi.jpg" class="imgstyle">
+                                <h2>
+                                    <input type="checkbox" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h2>
+                                    <h3>¥19.9</h3>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 textcenter textbold"> <input type="checkbox" value="option1">全选</div>
+                            <div class="col-md-3 col-sm-2  "><a href="#">批量删除</a></div>
+                        </div>
+                        <hr>
+                    </div>
+                    <!--我的收藏标签结束-->
+                    <!--我的评价标签开始-->
+                    <div class="tab-pane fade " id="user-tab9">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人信息>我的评价</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+
+                        <div class="row" style="background-color: #E0E0E0;padding: 10px;margin-top: 20px;margin-left: 2px;">
+                            <div class="col-md-2 col-sm-2 textcenter textbold">评价</div>
+                            <div class="col-md-5 col-sm-5  textcenter textbold">评语</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">商家</div>
+                            <div class="col-md-3 col-sm-3 textcenter textbold">商品</div>
+                        </div>
+                        <div class="row" style="padding: 10px;margin-top: 20px;margin-left: 2px;">
+                            <div class="col-md-2 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(255, 70, 78);" aria-hidden="true"></span>好评！</div>
+                            <div class="col-md-5 col-sm-5  textcenter textbold">衣服收到，是想象中的很满意，做工细整齐，物流快，正好这几天穿，喜欢的亲们赶快下手吧！</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">全勇运动户外特卖店</div>
+                            <div class="col-md-3 col-sm-3 textcenter textbold">李宁 女式 团购系列简约拼色无帽外套 AWDH484-1</div>
+                        </div>
+                        <hr>
+                        <div class="row" style="padding: 10px;margin-top: 20px;margin-left: 2px;">
+                            <div class="col-md-2 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-thumbs-down" style="color: rgb(255, 70, 78);" aria-hidden="true"></span>差评！</div>
+                            <div class="col-md-5 col-sm-5  textcenter textbold">衣服收到，是想象中的很满意，做工细整齐，物流快，正好这几天穿，喜欢的亲们赶快下手吧！</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold">全勇运动户外特卖店</div>
+                            <div class="col-md-3 col-sm-3 textcenter textbold">李宁 女式 团购系列简约拼色无帽外套 AWDH484-1</div>
+
+
+                        </div>
+                        <hr>
+                    </div>
+                    <!--我的评价标签结束-->
+                    <!--基本资料标签开始-->
+                    <div class="tab-pane fade" id="user-tab10">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 账户设置>基本资料</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
+                                        <img id="preview" src="~/images/fushi.jpg" width="100px" height="100px" style="display: block; width: 150px; height: 180px;">
+                                        <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
+                                            <input type="file" name="photoimg" id="photoimg" style="width:150px; opacity: 0;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin: 50px 0;font-size: 20px;line-height: 3em;font-family: '楷体';">
+                            <div class="col-md-12 col-sm-12 text-center textbold">
+                                昵称：那天๓淘宝科技
+                            </div>
+                            <div class="col-md-12 col-sm-12 text-center textbold">
+                                性别：<input type="radio" name="radio" value="1" style="margin-left:30px;" checked>男
+                                <input type="radio" name="radio" value="2" style="margin-left:30px;">女
+                            </div>
+                            <div class="col-md-12 col-sm-12 text-center textbold">
+                                手机号：15992680980
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 text-center textbold">
+                                <button href="#" class="button button-glow button-border button-rounded button-primary" style="">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--基本资料标签结束-->
+                    <!--收货地址标签开始-->
+                    <div class="tab-pane fade " id="user-tab11">
+                        <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 账户设置>收货地址</h1>
+                        <div id="sectext">
+                            <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
+                            <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5">
+                                <button href="#" class="button button-glow button-border button-rounded button-primary" style=""><span class="glyphicon glyphicon-plus"><span>添加新地址</button>
+                            </div>
+                        </div>
+                        <div class="row" style="background-color: aliceblue;padding: 10px;margin: 30px 5px;">
+                            <div class="col-md-8 col-sm-8">
+                                <span style="margin: 2px 5px;">广东省</span><span style="margin: 2px 5px;">珠海市</span><span style="margin: 2px 5px;">香洲区<span>唐家湾金凤路北京理工大学珠海学院 ( 张力 收)<span style="margin: 2px 5px;">15992680980<span>
+                            </div>
+                            <div class="col-md-4 col-sm-4 " style="text-align: right;">
+                                <a href="#">[默认地址]</a><a href="#" style="margin-left: 3px;">修改</a><a href="#" style="margin-left: 3px;">删除</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-left:28px;">
+                            <div class="col-md-8 col-sm-8">
+                                <span style="margin: 2px 5px;">广东省</span><span style="margin: 2px 5px;">珠海市</span><span style="margin: 2px 5px;">香洲区<span>唐家湾金凤路北京理工大学珠海学院 ( 张力 收)<span style="margin: 2px 5px;">15992680980<span>
+                            </div>
+                            <div class="col-md-4 col-sm-4 " style="text-align: right;display: none;">
+                                <a href="#">[设置默认地址]</a><a href="#" style="margin-left: 3px;">修改</a><a href="#" style="margin-left: 3px;">删除</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--收货地址标签结束-->
+                </div>
+            </div>
+        </div>
+        <!--标签导航结束-->
+    </div>
+    <!--手机屏幕显示DIV-->
+    <div class="container-fluid class-xm-container visible-xs" id="xm-container" style="margin-top:50px;">
+        <div class="row" style="background-color: #242424;border-bottom:1px solid #242424;">
+            <div class="col-xs-2"><img src="~/images/fushi.jpg" class="img-circle" width="50px"></div>
+            <div class="col-xs-6" style="color: white;font-size: 16px;line-height: 2em;">那天๓淘宝科技</div>
+        </div>
+        <div class="row">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default bordernone">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="panel-heading panel-user-xs " role="tab" id="headingOne" style="border-bottom: 1px solid #E0E0E0;">我的订单<span class="glyphicon glyphicon-chevron-right" style="float: right;color: #E4B9B9;"></span></div>
+                    </a>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon1.png" width="80%"><br>待付款</div>
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon2.jpg" width="80%"><br>待发货</div>
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon3.jpg" width="100%"><br>待收货</div>
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon4.jpg" width="80%"><br>待评价</div>
+                            </div>
+                            <div class="row" style="border-bottom:1px solid #E0E0E0 ;">
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon0.jpg" width="80%"><br>全订单</div>
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon5.jpg" width="90%"><br>售后中</div>
+                                <div class="col-xs-4 pannel-body-css  "><img src="~/images/background.jpg" width="150%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="border-top:none">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><div class="panel-heading panel-user-xs" role="tab" id="headingTwo" style="background-color: white;">销售订单<span class="glyphicon glyphicon-chevron-right" style="float: right;color: #E4B9B9;"></span></div></a>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon1.png" width="80%"><br>待付款</div>
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon2.jpg" width="80%"><br>待发货</div>
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon3.jpg" width="100%"><br>待收货</div>
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon4.jpg" width="80%"><br>待评价</div>
+                            </div>
+                            <div class="row" style="border-bottom:1px solid #E0E0E0 ;">
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon0.jpg" width="80%"><br>全订单</div>
+                                <div class="col-xs-3 pannel-body-css textcenter"><img src="~/images/icon5.jpg" width="90%"><br>售后中</div>
+                                <div class="col-xs-4 pannel-body-css "><img src="~/images/background.jpg" width="150%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default bordernone" style="margin-top: 30px">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> <div class="panel-heading panel-user-xs" role="tab" id="headingThree" style="background-color: white;"><span class="glyphicon glyphicon-heart" style="color:rgb(255, 70, 78);margin-right:10px;"></span>收藏夹<span class="glyphicon glyphicon-chevron-right" style="float: right;color: #E4B9B9;"></span></div></a>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div class="row" style="margin-top:20px">
+                                <div class="col-xs-5"><img src="~/images/fushi.jpg" width="120%"></div>
+                                <div class="col-xs-6 col-xs-offset-1 pannel-body-css" style="font-size: 13px;line-height: 1em;">春季新款男士低帮休闲鞋<br><h5 style="margin-top: 20%;color: red;">¥148</h5></div>
+                            </div>
+                            <div class="row" style="margin-top:20px">
+                                <div class="col-xs-5"><img src="~/images/fushi.jpg" width="120%"></div>
+                                <div class="col-xs-6 col-xs-offset-1 pannel-body-css" style="font-size: 13px;line-height: 1em;">春季新款男士低帮休闲鞋<br><h5 style="margin-top: 20%;color: red;">¥148</h5></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="border-top:none">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsef" aria-expanded="false" aria-controls="collapsef"> <div class="panel-heading panel-user-xs" role="tab" id="headingThree" style="background-color: white;"><span class="glyphicon glyphicon-shopping-cart" style="color:rgb(255, 70, 78);margin-right:10px;"></span>购物车<span class="glyphicon glyphicon-chevron-right" style="float: right;color: #E4B9B9;"></span></div></a>
+                    <div id="collapsef" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingf">
+                        <div class="panel-body">
+                            <div class="row" style="margin-top:20px">
+                                <div class="col-xs-1"><input type="checkbox" value="option1"></div>
+                                <div class="col-xs-4"><img src="~/images/fushi.jpg" width="120%"></div>
+                                <div class="col-xs-5 pannel-body-css1">春季新款男士低帮休闲鞋<br>颜色:大红<br>尺码:42</div>
+                                <div class="col-xs-1" style="color: red;">¥98</div>
+                            </div>
+                            <div class="row" style="margin-top:20px">
+                                <div class="col-xs-1"><input type="checkbox" value="option1"></div>
+                                <div class="col-xs-4"><img src="~/images/fushi.jpg" width="120%"></div>
+                                <div class="col-xs-5 pannel-body-css1">春季新款男士低帮休闲鞋<br>颜色:大红<br>尺码:42</div>
+                                <div class="col-xs-1" style="color: red;">¥98</div>
+                            </div>
+                            <div class="row" style="margin-top:20px">
+                                <div class="col-xs-3 pannel-body-css1"><input type="checkbox" value="option1">全选</div>
+                                <div class="col-xs-4 pannel-body-css1" style="margin-top:3px"><a href="#">批量删除</a></div>
+                                <div class="col-xs-4 col-xs-offset-1"><button href="#" class="btn button-glow button-border button-rounded button-primary">结算</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default bordernone" style="margin-top: 30px">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5"> <div class="panel-heading panel-user-xs" role="tab" id="headingThree" style="background-color: white;"><span class="glyphicon glyphicon-thumbs-up" style="color:rgb(255, 70, 78);margin-right:10px;"></span>发布<span class="glyphicon glyphicon-chevron-right" style="float: right;color: #E4B9B9;"></span></div></a>
+                    <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-5 pannel-body-css"><img src="~/images/icon10.jpg" width="95%">商品</div>
+                                <div class="col-xs-5 col-xs-offset-1 pannel-body-css"><img src="~/images/icon9.jpg" width="100%">任务</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="border-top:none">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6"> <div class="panel-heading panel-user-xs" role="tab" id="headingThree" style="background-color: white;"><span class="glyphicon glyphicon-wrench" style="color:rgb(255, 70, 78);margin-right:10px;"></span>已发布<span class="glyphicon glyphicon-chevron-right" style="float: right;color: #E4B9B9;"></span></div></a>
+                    <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-5 pannel-body-css"><img src="~/images/icon8.jpg" width="100%">商品</div>
+                                <div class="col-xs-5 col-xs-offset-1 pannel-body-css"><img src="~/images/icon9.jpg" width="100%">任务</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--手机屏幕显示DIV-->
+    <!--底部申明开始-->
+    @*<div id="fooddiv" class="container-fluid" style="background-color: #242424;">
+        <div id="foodtop" class="container">
+            <div class="row" id="foodtop1">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        平台介绍：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        公司简介：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h2 class="h21">
+                        加入我们：
+                    </h2>
+                    <h3 class="hh1">
+                        本平台是由本公司开发组的一款用于代购商品交易的电商平台。采用第三方支付的方式加强平台交易安全性。
+                    </h3>
+                    <img src="img/erwei.jpg" width="30%" height="30%" style="margin:20px 30px;">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 40px;margin-bottom: 10px;">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="咨询或意见或建议！" style="width:60%;display:inline;">
+                    <button href="#" class="btn button-glow button-border button-rounded button-primary">发送</button>
+                </div>
+                <div class="col-md-5 col-sm-4 col-xs-12">
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <img src="img/tb1.PNG">
+                    <img src="img/tb2.PNG">
+                    <img src="img/tb3.PNG">
+                    <img src="img/tb4.PNG">
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    <!--底部申明结束-->
+    <!--版权申明开始-->
+    @*<div class="container-fluid" style="background-color: #444444;margin: 0;">
+        <div class="container">
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-4 col-sm-4 col-xs-12" style="border-bottom:1px solid #E0E0E0">
+                    <h3 class="hh1">
+                        Copyright © 版权 2017卖银开发团队，本公司保留一切版权！
+                    </h3>
+                </div>
+                <div class="col-md-5 col-sm-4 col-xs-12">
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <h3 class="hh1">
+                        本公司正招贤纳士，如对我公司有信心，请联系！
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!--版权申明结束-->
+    <!--购物车Modal开始-->
+    <div class="modal fade" id="myModa3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">购物车</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-md-1 col-sm-1"><input type="checkbox" value="option1"></div>
+                        <div class="col-md-3 col-sm-3"><img src="~/images/fushi.jpg" width="100%"></div>
+                        <div class="col-md-3 col-sm-3 pannel-body-css1">春季新款男士低帮休闲鞋<br>颜色:<span class="spancss textbold">大红</span><br>尺码:<span class="spancss textbold">42</span></div>
+                        <div class="col-md-3 col-sm-3" style="color: red;"><button class="cartbtn" id="carbtnj1" onclick="cartsjian()">-</button><input type="text" style="width: 30px;text-align: center;" value="1" id="carttext1"><button class="cartbtn" id="carbtna1" onclick="cartsjia()">+</button></div>
+                        <div class="col-md-2 col-sm-2 textbold" style="color: red;font-size: 18px;">¥98</div>
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-3 pannel-body-css1"><input type="checkbox" value="option1">全选</div>
+                        <div class="col-xs-4 pannel-body-css1" style="margin-top:3px"><a href="#">批量删除</a></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submitlogin">结算</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--购物车Modal结束-->
+    <!--收藏夹Modal开始-->
+    <div class="modal fade" id="myModa4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">收藏夹</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-md-3 col-sm-3"><img src="~/images/fushi.jpg" width="100%"></div>
+                        <div class="col-md-5 col-sm-5 col-md-offset-1 col-sm-offset-1 pannel-body-css" style="font-size: 18px;line-height: 1em;">春季新款男士低帮休闲鞋<br><h5 style="margin-top: 20%;color: red;font-size: 18px;">¥148</h5></div>
+                        <button href="#" class="col-md-2 col-sm-2 button button-glow button-border button-rounded button-primary" style="">删除</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submitlogin">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--收藏夹Modal结束-->
+
+    <script src="~/js/indext.js"></script>
+    <script src="jq/jquery-3.1.0.js"></script>
+    <script src="bootstrap-3.3.0/dist/js/bootstrap.js"></script>
+</body>
+</html>
