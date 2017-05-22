@@ -7,26 +7,24 @@
     <link rel="stylesheet" href="~/css/buttoncss.css">
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/css/index.css" rel="stylesheet">
-
+    
 </head>
 <body>
+    <!--导航1-->
     <!--导航1-->
     <nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 4;" role="navigation" id="header">
         <div class="container-fluid">
             <div class="navbar-header">
-                <img src="~/images/logo.png" style="position: fixed;left: -1%;top:10px;" />
-            </div>
-            <ul class="nav nav-pills" id="firstnav" style="font-size: 25px;float: right;">
-                <li class="marginleft"><button class="btn1"><span class="glyphicon glyphicon-user icon1"></span></button></li>
-                <li class="marginleft"><button class="btn1"><span class="glyphicon glyphicon-shopping-cart icon1"></span></button></li>
-                <li class="marginleft"><button class="btn1"><span class="glyphicon glyphicon-heart icon1"></span></button></li>
-            </ul>
-            <div style="float:right;margin-right:30px">
-                <button href="#" class="button  button-glow button-border button-rounded button-primary" style="" data-toggle="modal" data-target="#myModal">登录</button>
-                <button href="#" class="button button-glow button-border button-rounded button-primary" style="" data-toggle="modal" data-target="#myModa2">注册</button>
+                <a asp-action="Index"> <img src="~/images/logo.png" style="position: fixed;left: -1%;top:10px" /></a>
+</div>
+            <div style="float:right;margin-right:10px;margin-top: 5px;" class="">
+                <button href="#" class="button button-circle button-raised button-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user" style="color: white;"></span></button>
+                <button href="#" class="button button-circle button-raised button-primary" data-toggle="modal" data-target="#myModa2"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button>
+                <div class="hidden-xs" style="width: 20px;display: inline-block;"></div>
             </div>
         </div>
     </nav>
+    <!--导航1结束-->
     <!-- 登录注册Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -127,7 +125,6 @@
     </div>
     <!-- 登录注册Modal结束 -->
     <!--导航1结束-->
-    <!--导航2-->
     <nav class="navbar navbar-default navbar-fixed-top" style="margin-top:50px;z-index: 4;" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -137,26 +134,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <ul class="nav nav-pills" style="font-family: '楷体';font-size: 18px;">
-                    <li role="presentation" class="active"><a asp-action="index">首页</a></li>
-                    <li role="presentation"><a href="#">精选</a></li>
-                    <li role="presentation"><a href="#">服饰</a></li>
-                    <li role="presentation"><a href="#">美妆</a></li>
-                    <li role="presentation"><a href="#">鞋包</a></li>
-
-                    <div class="collapse navbar-collapse" id="example-navbar-collapse1">
-                        <ul class="nav nav-pills">
-                            <li role="presentation"><a href="#">居家</a></li>
-                            <li role="presentation"><a href="#">配饰</a></li>
-                            <li role="presentation"><a href="#">家纺</a></li>
-                            <li role="presentation"><a href="#">运动</a></li>
-                            <li role="presentation"><a href="#">美食</a></li>
-                            <li role="presentation"><a href="#">母婴儿童</a></li>
-                            <li role="presentation"><a href="#">数码家电</a></li>
-                            <li role="presentation" style="margin-top: 7px;"><input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入您想找的宝贝！"></li>
-                            <li role="presentation" style="margin-top: 6px;"><button href="#" class="btn button-glow button-border button-rounded button-primary">Go</button></li>
-                        </ul>
-                    </div>
+                <div class="visible-xs">
+                    <a href="user.html">
+                        <div class="row">
+                            <div class="col-xs-2"><img src="~/images/fushi.jpg" class="img-circle" width="50px"></div>
+                            <div class="col-xs-6 textbold" style="color: dodgerblue;font-size: 16px;line-height: 3em;">那天๓淘宝科技</div>
+                    </a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse1" style="font-family: '楷体';font-size: 18px;">
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="active"><a href="#">首页</a></li>
+                    <li role="presentation"><a href="list/fushi.html">服饰</a></li>
+                    <li role="presentation"><a href="list/meishi.html">美妆</a></li>
+                    <li role="presentation"><a href="list/xiebao.html">鞋包</a></li>
+                    <li role="presentation"><a href="list/jujia.html">居家</a></li>
+                    <li role="presentation"><a href="list/peishi.html">配饰</a></li>
+                    <li role="presentation"><a href="list/jiafang.html">家纺</a></li>
+                    <li role="presentation"><a href="list/yundong.html">运动</a></li>
+                    <li role="presentation"><a href="list/meishi.html">美食</a></li>
+                    <li role="presentation"><a href="list/muyingertong.html">母婴儿童</a></li>
+                    <li role="presentation"><a href="list/shumajiadian.html">数码家电</a></li>
+                    <!--<li role="presentation" style="margin-top: 7px;"><input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入您想找的宝贝！"></li>
+                    <li role="presentation" style="margin-top: 6px;"><button href="list/serch.html" class="btn button-glow button-border button-rounded button-primary">Go</button></li>-->
                 </ul>
             </div>
         </div>
