@@ -42,6 +42,10 @@ namespace YoKe
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = @"Data Source=10.14.9.71;Initial Catalog=PurchasingDB;Persist Security Info=True;User ID=sa;Password=1992z2008qq;MultipleActiveResultSets=true";
+
+            services.AddDbContext<F__YOKE_DATABASE_YOKEDB_DATA_MDFContext>(options => options.UseSqlServer(connection));
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
