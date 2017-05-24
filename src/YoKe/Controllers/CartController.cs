@@ -47,7 +47,7 @@ namespace YoKe.Controllers
             }
 
             ViewBag.cart = cart;
-            return View("PersonalCenter");
+            return View("Cart");
         }
 
         public ActionResult AddCart(int id)

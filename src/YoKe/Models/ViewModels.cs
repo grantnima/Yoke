@@ -7,14 +7,15 @@ using YoKe.Models;
 
 namespace YoKe.Models
 {
-    public class ProductList
-    {
-        public Product p { get; set; }
-    }
-
+  
     public class HomeIndexViewModel
     {
         public List<ProductList> Products { get; set; }
+    }
+
+    public class ProductList
+    {
+        public Product p { get; set; }
     }
 
     public class CartItem

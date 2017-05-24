@@ -19,7 +19,7 @@
     <div id="navright" class="hidden-xs">
         <!--侧边导航user开始-->
         <div id="navrightuser">
-            <a asp-action="PersonalCenter"><button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2"><span class="glyphicon glyphicon-user" style="color: white;"></span></button></a>
+            <a href="/Cart"><button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" onmouseout="this.style.backgroundColor='#444444';" class="btn2"><span class="glyphicon glyphicon-user" style="color: white;"></span></button></a>
         </div>
         <div id="navbag" style="margin-top: 100%;color: white;">
             <button onmouseover="this.style.backgroundColor='rgb(255,70,78)';" data-toggle="modal" data-target="#myModa3" onmouseout="this.style.backgroundColor='#444444';" class="btn2">
@@ -226,9 +226,9 @@
 @foreach (ProductList pl in Model.Products)
 {
         <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-            <a href="Home/Message/@pl.p.ObjId"><img src="~/images/goods.jpg" class="imgstyle"></a>
+            <a href='/Home/Detail/@pl.p.ObjId'><img src="~/images/goods.jpg" class="imgstyle"></a>
             <h3>@pl.p.ProductName</h3>
-            <h3>@pl.p.Price</h3>
+            <h3>¥@pl.p.Price</h3>
         </div>
 }
     </div>
