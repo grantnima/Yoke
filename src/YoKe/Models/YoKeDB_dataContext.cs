@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace YoKe.Models
 {
-    public partial class F__YOKE_DATABASE_YOKEDB_DATA_MDFContext : DbContext
+    public partial class YoKeDB_dataContext : DbContext
     {
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
@@ -13,7 +13,7 @@ namespace YoKe.Models
         //}
 
 
-        public F__YOKE_DATABASE_YOKEDB_DATA_MDFContext(DbContextOptions<F__YOKE_DATABASE_YOKEDB_DATA_MDFContext> options) : base(options) { }
+        public YoKeDB_dataContext(DbContextOptions<YoKeDB_dataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

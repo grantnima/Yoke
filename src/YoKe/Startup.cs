@@ -44,7 +44,7 @@ namespace YoKe
         {
             var connection = @"Data Source=10.14.9.71;Initial Catalog=PurchasingDB;Persist Security Info=True;User ID=sa;Password=1992z2008qq;MultipleActiveResultSets=true";
 
-            services.AddDbContext<F__YOKE_DATABASE_YOKEDB_DATA_MDFContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<YoKeDB_dataContext>(options => options.UseSqlServer(connection));
 
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
@@ -61,6 +61,8 @@ namespace YoKe
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddSession();
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

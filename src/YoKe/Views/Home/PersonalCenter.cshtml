@@ -807,6 +807,8 @@
                     </div>
                     <!--我的消息标签结束-->
                     <!--购物车标签开始-->
+                    @if (ViewBag.cart != null && ((List<CartItem>)ViewBag.cart).Count >= 1)
+                    {
                     <div class="tab-pane fade" id="user-tab7">
                         <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人信息>购物车</h1>
                         <div id="sectext">
@@ -820,17 +822,20 @@
                             <div class="col-md-2 col-sm-2 textcenter textbold">数量</div>
                             <div class="col-md-3 col-sm-3 textcenter textbold">操作</div>
                         </div>
+@foreach (var cartItem in ViewBag.cart as List<CartItem>)
+{
                         <div class="row" style="margin-left: 10px;margin-top: 20px;border: 1px solid #E0E0E0;height: 150px;">
                             <div class="col-md-3 col-sm-3   margintop20">
                                 <input type="checkbox" value="option1"><img src="~/images/fushi.jpg" width="100px">
                             </div>
-                            <div class="col-md-2 col-sm-2  margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
+                            <div class="col-md-2 col-sm-2  margintop20">@cartItem.productName</div>
                             <div class="col-md-2 col-sm-2   textbold margintop20">颜色: RB/9953/兰色<br>尺码: 42</div>
-                            <div class="col-md-2 col-sm-3  textcenter textbold " style="height: 100%;padding-top:20px;border-top:none;border-bottom:none;"><button class="cartbtn" id="carbtnj" onclick="cartsjian()">-</button><input type="text" style="width: 30px;text-align: center;" value="1" id="carttext"><button class="cartbtn" id="carbtna" onclick="cartsjia()">+</button><br><h1 style="font-size: 18px;color: red;margin-top:20px ;">¥98</h1></div>
+                            <div class="col-md-2 col-sm-3  textcenter textbold " style="height: 100%;padding-top:20px;border-top:none;border-bottom:none;"><button class="cartbtn" id="carbtnj" onclick="cartsjian()">-</button><input type="text" style="width: 30px;text-align: center;" value="@cartItem.qty" id="carttext"><button class="cartbtn" id="carbtna" onclick="cartsjia()">+</button><br><h1 style="font-size: 18px;color: red;margin-top:20px ;">¥@cartItem.price</h1></div>
                             <div class="col-md-3 col-sm-2  text-center " style="line-height:2em;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
                                 <a href="#">删除</a><br><a href="#">移入收藏夹</a>
                             </div>
                         </div>
+}
                         <hr>
                         <div class="row">
                             <div class="col-md-2 col-sm-2 textcenter textbold"> <input type="checkbox" value="option1">全选</div>
@@ -841,6 +846,7 @@
                         </div>
                         <hr>
                     </div>
+                    }
                     <!--购物车标签结束-->
                     <!--我的收藏标签开始-->
                     <div class="tab-pane fade" id="user-tab8">
