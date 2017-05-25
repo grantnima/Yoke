@@ -7,20 +7,22 @@
     <link rel="stylesheet" href="~/css/buttoncss.css">
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="~/css/index.css" rel="stylesheet">
-    
+    <script type="text/javascript">
+			window.onload = function() {
+	           $('.checkboxchange').change(function(){
+	           	document.getElementById("use-heart-all").checked=false;
+	           })
+               $('.checkboxcart').change(function(){
+	           	document.getElementById("use-cart-all").checked=false;
+	           	document.getElementById("use-cart-all1").checked=false;
+	           	document.getElementById("use-cart-all2").checked=false;
+	           })
+               $('.cartsj').attr("disabled", "disabled");
+            }
+    </script>
 </head>
 <body>
-    <!--导航1-->
-    @*<nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 4;border-bottom: none;" role="navigation" id="header">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <img src="img/LOGO.png" style="position: fixed;left: -1%;top:10px" />
-            </div>
-
-        </div>
-    </nav>*@
-    <!--导航1结束-->
-    <!--侧边导航开始-->
+    <!--导航1--><div style="margin-top:100px">
     <div id="navright" class="hidden-xs">
         <!--侧边导航user开始-->
         <div id="navrightuser">
@@ -817,7 +819,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-2 col-sm-2 textcenter textbold"> <input type="checkbox" value="option1">全选</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold"><input type="checkbox" value="option1" id="use-cart-all" onclick="checkall('use-cart-all','use-cart')">全选</div>
                             <div class="col-md-5 col-sm-5 textcenter textbold">商品</div>
                             <div class="col-md-2 col-sm-2 textcenter textbold">数量</div>
                             <div class="col-md-3 col-sm-3 textcenter textbold">操作</div>
@@ -826,11 +828,11 @@
 {
                         <div class="row" style="margin-left: 10px;margin-top: 20px;border: 1px solid #E0E0E0;height: 150px;">
                             <div class="col-md-3 col-sm-3   margintop20">
-                                <input type="checkbox" value="option1"><img src="~/images/fushi.jpg" width="100px">
+                                <input type="checkbox" value="option1" class="checkboxcart" name="use-cart"><img src="~/images/fushi.jpg" width="100px">
                             </div>
                             <div class="col-md-2 col-sm-2  margintop20">@cartItem.productName</div>
                             <div class="col-md-2 col-sm-2   textbold margintop20">颜色: RB/9953/兰色<br>尺码: 42</div>
-                            <div class="col-md-2 col-sm-3  textcenter textbold " style="height: 100%;padding-top:20px;border-top:none;border-bottom:none;"><button class="cartbtn" id="carbtnj" onclick="cartsjian()">-</button><input type="text" style="width: 30px;text-align: center;" value="@cartItem.qty" id="carttext"><button class="cartbtn" id="carbtna" onclick="cartsjia()">+</button><br><h1 style="font-size: 18px;color: red;margin-top:20px ;">¥@cartItem.price</h1></div>
+                            <div class="col-md-2 col-sm-3  textcenter textbold " style="height: 100%;padding-top:20px;border-top:none;border-bottom:none;"><button class="cartbtn cartsj" id="carbtnj" onclick="cartsjian(9)">-</button><input type="text" style="width: 30px;text-align: center;" value="1" id="carttext" onchange="cartextchange('carttext',9)" onfocusout="usetextchange()"><button class="cartbtn cartsjia" id="carbtna" onclick="cartsjia(9)">+</button><br><h1 style="font-size: 18px;color: red;margin-top:20px ;">¥@cartItem.price</h1></div>
                             <div class="col-md-3 col-sm-2  text-center " style="line-height:2em;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
                                 <a href="#">删除</a><br><a href="#">移入收藏夹</a>
                             </div>
@@ -838,7 +840,7 @@
 }
                         <hr>
                         <div class="row">
-                            <div class="col-md-2 col-sm-2 textcenter textbold"> <input type="checkbox" value="option1">全选</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold"> <input type="checkbox" value="option1" id="use-cart-all1" onclick="checkall('use-cart-all1','use-cart')">全选</div>
                             <div class="col-md-3 col-sm-2  "><a href="#">批量删除</a></div>
                             <div class="col-md-2 col-sm-2 textcenter textbold">共计<span style="color: rgb(255, 70, 78);font-size: 20px;">2</span>件</div>
                             <div class="col-md-3 col-sm-3  textbold">总计（不含运费）:<span style="color: rgb(255, 70, 78);font-size: 20px;">98</span></div>
@@ -859,29 +861,29 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
                                 <img src="~/images/fushi.jpg" class="imgstyle">
-                                <h5><input type="checkbox" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h5>
+                                <h5><input type="checkbox" name="use-heart" class="checkboxchange" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h5>
                                 <h3>¥19.9</h3>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
                                 <img src="~/images/fushi.jpg" class="imgstyle">
-                                <h5><input type="checkbox" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h5>
+                                <h5><input type="checkbox" name="use-heart" class="checkboxchange" value="option2">慕小爱绿色新鲜水果黄瓜农家自种</h5>
                                 <h3>¥19.9</h3>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
                                 <img src="~/images/fushi.jpg" class="imgstyle">
-                                <h5><input type="checkbox" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h5>
+                                <h5><input type="checkbox" name="use-heart" class="checkboxchange" value="option3">慕小爱绿色新鲜水果黄瓜农家自种</h5>
                                 <h3>¥19.9</h3>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
                                 <img src="~/images/fushi.jpg" class="imgstyle">
-                                <h2>
-                                    <input type="checkbox" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h2>
+                                <h5>
+                                    <input type="checkbox" name="use-heart" class="checkboxchange" value="option4">慕小爱绿色新鲜水果黄瓜农家自种</h5>
                                     <h3>¥19.9</h3>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-md-2 col-sm-2 textcenter textbold"> <input type="checkbox" value="option1">全选</div>
+                            <div class="col-md-2 col-sm-2 textcenter textbold"><input type="checkbox" id="use-heart-all" value="option0" onclick="checkall('use-heart-all','use-heart')">全选</div>
                             <div class="col-md-3 col-sm-2  "><a href="#">批量删除</a></div>
                         </div>
                         <hr>
@@ -1225,9 +1227,9 @@
             </div>
         </div>
     </div>
-    <!--收藏夹Modal结束-->
+    <!--收藏夹Modal结束--></div>
 
-    <script src="~/js/indext.js"></script>
+    <script src="~/js/index.js"></script>
     <script src="jq/jquery-3.1.0.js"></script>
     <script src="bootstrap-3.3.0/dist/js/bootstrap.js"></script>
 </body>

@@ -15,7 +15,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" style="z-index: 4;" role="navigation" id="header">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a asp-action="Index"> <img src="~/images/logo.png" style="position: fixed;left: -1%;top:10px" /></a>
+                <a asp-action="Index"asp-controller="Home"> <img src="~/images/logo.png" style="position: fixed;left: -1%;top:10px" /></a>
 </div>
             <div style="float:right;margin-right:10px;margin-top: 5px;" class="">
                 <button href="#" class="button button-circle button-raised button-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user" style="color: white;"></span></button>
@@ -40,23 +40,22 @@
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon "><span class="glyphicon glyphicon-phone"></span></span>
-                                    <input type="text" class="form-control has-success" name="phonelogintext" placeholder="手机号" id="phonelogintext" onclick="phonetext1()">
+                                    <input type="text" class="form-control has-success" name="phonelogintext" placeholder="手机号" id="phonelogintext" onfocusout="phonetext1('phonelogintext','phoneloginp')">
                                 </div>
-                                <p class="bg-danger" id="phoneloginp"></p>
+                                <p class="bg-danger" id="phoneloginp" style="font-size: 15px;color: red;"></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">密码:</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control passwordtext" name="passlogintext" id="passlogintext" placeholder="Password" onclick="passtext1()">
-                                <p class="bg-danger" id="passloginp"></p>
+                                <input type="password" class="form-control passwordtext" name="passlogintext" id="passlogintext" placeholder="Password" onfocusout="passwordtext1('passlogintext','passloginp')">
+                                <p class="bg-danger" id="passloginp" style="font-size: 15px;color: red;"></p>
                             </div>
                         </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" id="submitlogin">登录</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="submitlogin">登录</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                     </form>
                 </div>
             </div>
@@ -76,23 +75,23 @@
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon "><span class="glyphicon glyphicon-phone"></span></span>
-                                    <input type="text" class="form-control has-success" name="phonetext" placeholder="手机号" id="phonetext" onclick="phonetext1()">
+                                    <input type="text" class="form-control has-success" name="phonetext" placeholder="手机号" id="phonetext" onfocusout="phonetext1('phonetext','phonep')">
                                 </div>
-                                <p class="bg-danger" id="phonep"></p>
+                                <p class="bg-danger" id="phonep" style="font-size: 15px;color: red;"></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">密码:</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control passwordtext" name="passtext" id="passtext" placeholder="Password" onclick="passtext1()">
-                                <p class="bg-danger" id="passp"></p>
+                                <input type="password" class="form-control passwordtext" name="passtext" id="passtext" placeholder="Password" id="passtext" onfocusout="passwordtext1('passtext','passp')">
+                                <p class="bg-danger" id="passp" style="font-size: 15px;color: red;"></p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">确认密码:</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control passwordtext" name="wordtext" id="wordtext" placeholder="Password" onclick="wordtext1()">
-                                <p class="bg-danger" id="wordp"></p>
+                                <input type="password" class="form-control passwordtext" name="wordtext" id="wordtext" placeholder="Password" id="wordtext" onfocusout="passwordtext1('wordtext','wordp')">
+                                <p class="bg-danger" id="wordp" style="font-size: 15px;color: red;"></p>
                             </div>
                         </div>
 
@@ -101,7 +100,7 @@
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon "><span class="glyphicon glyphicon-envelope"></span></span>
-                                    <input type="text" class="form-control" placeholder="邮箱" name="emailtext" id="emailtext" onclick="emailtext1()">
+                                    <input type="text" class="form-control" placeholder="邮箱" name="emailtext" id="emailtext" onfocusout="emailtext1()">
                                     <div id="dropdown" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                         <ul>
                                             <li class="on">请选择邮箱类型</li>
@@ -111,14 +110,14 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <p class="bg-danger" id="emailp"></p>
+                                <p class="bg-danger" id="emailp" style="font-size: 15px;color: red;"></p>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" id="submitregister">注册</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -230,8 +229,9 @@
         </div>
     </div>
     <!--版权申明结束-->
-
+    
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/index.js"></script>
 </body>
 </html>
