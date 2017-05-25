@@ -12,6 +12,7 @@ using YoKe.Models;
 using YoKe.Models.AccountViewModels;
 using YoKe.Services;
 
+
 namespace YoKe.Controllers
 {
     [Authorize]
@@ -22,19 +23,22 @@ namespace YoKe.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private readonly YoKeDB_dataContext db;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            YoKeDB_dataContext yokeDB)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            db = yokeDB;
         }
 
         //
@@ -100,7 +104,7 @@ namespace YoKe.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
@@ -109,6 +113,15 @@ namespace YoKe.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    Customer c = db.Customer.Add(new Customer()).Entity;
+                    c.UserName = model.Email;
+                    c.PassWord = null;
+                    c.MobilePhone = model.MobilePhone;
+                    c.RegistDate = null;
+                    c.TheCustomerType = 1;
+                    c.Email = model.Email;
+                    c.UserId = null;
+                    db.SaveChanges();
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
