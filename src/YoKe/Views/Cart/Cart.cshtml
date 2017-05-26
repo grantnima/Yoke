@@ -1,4 +1,7 @@
-﻿@{ ViewData["title"] = "个人中心";}
+﻿@{ ViewData["title"] = "个人中心";
+    int cartRow = 0;
+    int faviRow = 0;
+    }
 @{ Layout = null;}
 <!DOCTYPE html>
 <html>
@@ -19,7 +22,17 @@
 	           	document.getElementById("use-cart-all2").checked=false;
 	           })
                $('.cartsj').attr("disabled", "disabled");
-            }
+			}
+			function _doDelete(row, retUrl) {
+			    window.location.assign("/Cart/deleCartRow/" + row + "?retUrl=" + retUrl);
+			}
+			function _doFaviDelete(row, retUrl) {
+			    window.location.assign("/Cart/deleFaviRow/" + row + "?retUrl=" + retUrl);
+			}
+			function _doStore(row, retUrl) {
+			    window.location.assign("/Cart/storeCartRow/" + row + "?retUrl=" + retUrl);
+			}
+			
     </script>
 </head>
 <body>
@@ -822,8 +835,7 @@
                     </div>
                     <!--我的消息标签结束-->
                     <!--购物车标签开始-->
-                    @if (ViewBag.cart != null && ((List<CartItem>)ViewBag.cart).Count >= 1)
-                    {
+                    
                     <div class="tab-pane fade" id="user-tab7">
                         <h1 class="titleh1" style="text-align: left;margin-top: 50px;">个人中心 > 个人信息>购物车</h1>
                         <div id="sectext">
@@ -847,7 +859,7 @@
                             <div class="col-md-2 col-sm-2   textbold margintop20">颜色: RB/9953/兰色<br>尺码: 42</div>
                             <div class="col-md-2 col-sm-3  textcenter textbold " style="height: 100%;padding-top:20px;border-top:none;border-bottom:none;"><button class="cartbtn cartsj" id="carbtnj" onclick="cartsjian(9)">-</button><input type="text" style="width: 30px;text-align: center;" value="1" id="carttext" onchange="cartextchange('carttext',9)" onfocusout="usetextchange()"><button class="cartbtn cartsjia" id="carbtna" onclick="cartsjia(9)">+</button><br><h1 style="font-size: 18px;color: red;margin-top:20px ;">¥@cartItem.price</h1></div>
                             <div class="col-md-3 col-sm-2  text-center " style="line-height:2em;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
-                                <a href="#">删除</a><br><a href="#">移入收藏夹</a>
+                                <a href="javascript:_doDelete(@cartRow,'@ViewBag.continueBuy')">删除</a><br><a href="javascript:_doStore(@cartRow,'@ViewBag.continueBuy')">移入收藏夹</a>
                             </div>
                         </div>
 }
@@ -861,7 +873,7 @@
                         </div>
                         <hr>
                     </div>
-                    }
+                    
                     <!--购物车标签结束-->
                     <!--我的收藏标签开始-->
                     <div class="tab-pane fade" id="user-tab8">
@@ -872,32 +884,19 @@
                         </div>
                         <hr>
                         <div class="row">
+@foreach (var cartItem in ViewBag.favi as List<CartItem>)
+{
                             <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
                                 <img src="~/images/fushi.jpg" class="imgstyle">
-                                <h5><input type="checkbox" name="use-heart" class="checkboxchange" value="option1">慕小爱绿色新鲜水果黄瓜农家自种</h5>
-                                <h3>¥19.9</h3>
+                                <h5><input type="checkbox" name="use-heart" class="checkboxchange" value="option1">@cartItem.productName</h5>
+                                <h3>¥@cartItem.price</h3>
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                                <img src="~/images/fushi.jpg" class="imgstyle">
-                                <h5><input type="checkbox" name="use-heart" class="checkboxchange" value="option2">慕小爱绿色新鲜水果黄瓜农家自种</h5>
-                                <h3>¥19.9</h3>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                                <img src="~/images/fushi.jpg" class="imgstyle">
-                                <h5><input type="checkbox" name="use-heart" class="checkboxchange" value="option3">慕小爱绿色新鲜水果黄瓜农家自种</h5>
-                                <h3>¥19.9</h3>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                                <img src="~/images/fushi.jpg" class="imgstyle">
-                                <h5>
-                                    <input type="checkbox" name="use-heart" class="checkboxchange" value="option4">慕小爱绿色新鲜水果黄瓜农家自种</h5>
-                                    <h3>¥19.9</h3>
-                            </div>
+}
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-md-2 col-sm-2 textcenter textbold"><input type="checkbox" id="use-heart-all" value="option0" onclick="checkall('use-heart-all','use-heart')">全选</div>
-                            <div class="col-md-3 col-sm-2  "><a href="#">批量删除</a></div>
+                            <div class="col-md-3 col-sm-2  "><a href="javascript:_doFaviDelete(@faviRow,'@ViewBag.continueBuy')">批量删除</a></div>
                         </div>
                         <hr>
                     </div>
@@ -1243,7 +1242,8 @@
     <!--收藏夹Modal结束--></div>
 
     <script src="~/js/index.js"></script>
-    <script src="jq/jquery-3.1.0.js"></script>
-    <script src="bootstrap-3.3.0/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>
