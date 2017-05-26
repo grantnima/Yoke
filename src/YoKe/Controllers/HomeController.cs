@@ -25,11 +25,11 @@ namespace YoKe.Controllers
             {
                 ProductList pl = new ProductList();
                 pl.p = new Product { ObjId = p.ObjId, ProductName = p.ProductName, BigImg = p.BigImg, Price = p.Price };
-                
-                
-                
+
+
+
                 ivm.Products.Add(pl);
-                
+
             }
             return View(ivm);
         }
