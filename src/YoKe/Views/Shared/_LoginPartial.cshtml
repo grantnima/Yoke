@@ -9,18 +9,22 @@
     <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">欢迎您， @UserManager.GetUserName(User)!</a>
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">注销</button>
             </li>
+            <li><div class="hidden-xs" style="width: 60px;display: inline-block;"></div></li>
         </ul>
+        
     </form>
+
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
-    </ul>
+    <div style="float:right;margin-right:10px;margin-top: 5px;" class="">
+        <a asp-controller="Account" asp-action="Login"><button href="#" class="button button-circle button-raised button-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user" style="color: white;"></span></button></a>
+        <a asp-controller="Account" asp-action="Register"><button href="#" class="button button-circle button-raised button-primary" data-toggle="modal" data-target="#myModa2"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button></a>
+        <div class="hidden-xs" style="width: 20px;display: inline-block;"></div>
+    </div>
 }

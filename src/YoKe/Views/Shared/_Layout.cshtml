@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    ViewBag.contBuy = "/";
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -18,16 +22,23 @@
                 <a asp-action="Index"asp-controller="Home"> <img src="~/images/logo.png" style="position: fixed;left: -1%;top:10px" /></a>
 </div>
             <div style="float:right;margin-right:10px;margin-top: 5px;" class="">
-                <button href="#" class="button button-circle button-raised button-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user" style="color: white;"></span></button>
+                @*<button href="#" class="button button-circle button-raised button-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user" style="color: white;"></span></button>
                 <button href="#" class="button button-circle button-raised button-primary" data-toggle="modal" data-target="#myModa2"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button>
-                <div class="hidden-xs" style="width: 20px;display: inline-block;"></div>
+                <div class="hidden-xs" style="width: 20px;display: inline-block;"></div>*@
+                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
     <!--导航1结束-->
     <!-- 登录注册Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        @*<iframe src="/Account/Login" class="col-md-8 col-lg-offset-2" style="background:white;">
+
+        </iframe>*@
+        @*@{ await Html.RenderPartialAsync("Users", Model.Users);}*@
+        
+            @*@await Html.PartialAsync("/Views/Account/Login.cshtml");*@       
+        @*<div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -59,10 +70,11 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
     <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        @*@await Html.PartialAsync("../Account/Register.cshtml")*@
+        @*<div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -120,7 +132,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
     <!-- 登录注册Modal结束 -->
     <!--导航1结束-->
