@@ -3,6 +3,7 @@
     int faviRow = 0;
     }
 @{ Layout = null;}
+@model ProductList
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,7 +142,7 @@
                                     <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
                                     <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                 </div>
-                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                @*<div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
                                     <div class="col-md-2 col-sm-2  textbold margintop20">
                                         <img src="~/images/fushi.jpg" width="100px">
                                     </div>
@@ -154,7 +155,7 @@
                                         <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">确认收货</button>
                                         <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                             <!--user-tab1-tab1--end-->
                             <!--user-tab1-tab2---->
@@ -165,13 +166,15 @@
                                     <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
                                     <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                 </div>
+@foreach (var cartItem in ViewBag.order as List<CartItem>)
+{
                                 <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
                                     <div class="col-md-2 col-sm-2  textbold margintop20">
                                         <img src="~/images/fushi.jpg" width="100px">
                                     </div>
-                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
-                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
-                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">@cartItem.productName</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥@cartItem.price</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">@cartItem.qty</div>
                                     <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
                                     <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待付款<br>订单详情</div>
                                     <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
@@ -179,6 +182,7 @@
                                         <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">取消订单</button>
                                     </div>
                                 </div>
+}
                             </div>
                             <!--user-tab1-tab2--end-->
                             <!--user-tab1-tab3---->
@@ -860,6 +864,8 @@
                             <div class="col-md-2 col-sm-3  textcenter textbold " style="height: 100%;padding-top:20px;border-top:none;border-bottom:none;"><button class="cartbtn cartsj" id="carbtnj" onclick="cartsjian(9)">-</button><input type="text" style="width: 30px;text-align: center;" value="1" id="carttext" onchange="cartextchange('carttext',9)" onfocusout="usetextchange()"><button class="cartbtn cartsjia" id="carbtna" onclick="cartsjia(9)">+</button><br><h1 style="font-size: 18px;color: red;margin-top:20px ;">¥@cartItem.price</h1></div>
                             <div class="col-md-3 col-sm-2  text-center " style="line-height:2em;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
                                 <a href="javascript:_doDelete(@cartRow,'@ViewBag.continueBuy')">删除</a><br><a href="javascript:_doStore(@cartRow,'@ViewBag.continueBuy')">移入收藏夹</a>
+                                <a asp-action="AddOrder/@cartItem.id">结算</a>
+                                
                             </div>
                         </div>
 }
@@ -870,6 +876,8 @@
                             <div class="col-md-2 col-sm-2 textcenter textbold">共计<span style="color: rgb(255, 70, 78);font-size: 20px;">2</span>件</div>
                             <div class="col-md-3 col-sm-3  textbold">总计（不含运费）:<span style="color: rgb(255, 70, 78);font-size: 20px;">98</span></div>
                             <div class="col-md-2 col-sm-3"><button href="#" class="button button-glow button-border button-rounded button-primary">结算</button></div>
+                            
+                            
                         </div>
                         <hr>
                     </div>

@@ -31,10 +31,13 @@ namespace FlowerWorld.Controllers
 
             List<int[]> curCart = HttpContext.Session.GetJson<List<int[]>>("Cart");
             List<int[]> curFavi = HttpContext.Session.GetJson<List<int[]>>("Favi");
+            List<int[]> curOrder = HttpContext.Session.GetJson<List<int[]>>("Order");
             if (curCart == null) curCart = new List<int[]>();
             if (curFavi == null) curFavi = new List<int[]>();
+            if (curOrder == null) curOrder = new List<int[]>();
             List<CartItem> cart = new List<CartItem>();
             List<CartItem> favi = new List<CartItem>();
+            List<CartItem> order = new List<CartItem>();
             foreach (int[] i in curCart)
             {
                 int curId = i[0];
@@ -45,7 +48,7 @@ namespace FlowerWorld.Controllers
                                          new CartItem
                                          {
                                              productName = p.ProductName,
-                                             
+                                             id = p.ObjId,
                                              price = (double)p.Price,
                                              qty = curQty,
                                              
@@ -62,17 +65,33 @@ namespace FlowerWorld.Controllers
                                          new CartItem
                                          {
                                              productName = p.ProductName,
-                                             
+                                             id = p.ObjId,
                                              price = (double)p.Price,
                                              qty = curQty,
                                              
                                          }).FirstOrDefault<CartItem>();
                 favi.Add(cartItem);
             }
-            
+            foreach (int[] i in curOrder)
+            {
+                int curId = i[0];
+                int curQty = i[1];
+                CartItem cartItem = (from p in db.Product
+                                     where p.ObjId == curId
+                                     select
+                                         new CartItem
+                                         {
+                                             productName = p.ProductName,
+                                             id = p.ObjId,
+                                             price = (double)p.Price,
+                                             qty = curQty,
+
+                                         }).FirstOrDefault<CartItem>();
+                order.Add(cartItem);
+            }
             ViewBag.cart = cart;
             ViewBag.favi = favi;
-           
+            ViewBag.order = order;
             return View("Cart");
         }
 
@@ -132,6 +151,31 @@ namespace FlowerWorld.Controllers
                 continueBuy = Request.Query["retUrl"].ToString();
             }
             return Redirect(continueBuy);
+        }
+        public ActionResult AddOrder(int id)
+        {
+            List<int[]> curOrder = HttpContext.Session.GetJson<List<int[]>>("Cart");
+            if (curOrder == null)
+                HttpContext.Session.SetJson("Cart", new List<int[]> { new int[] { id, 1 } });
+            else
+            {
+                bool found = false;
+                foreach (var p in curOrder)
+                {
+                    if (p[0] == id)
+                    {
+                        found = true;
+                        p[1] += 1;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    curOrder.Add(new int[] { id, 1 });
+                }
+                HttpContext.Session.SetJson("Order", curOrder);
+            }
+            return Index();
         }
 
         public RedirectResult updateCartRow(int id)
