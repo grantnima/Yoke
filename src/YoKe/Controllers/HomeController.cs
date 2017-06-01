@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using YoKe.Models;
 
+
+// 模拟支付平台：  http://10.0.14.129:8801/default.aspx
+// 商家代号： Team04
+// 
+
 namespace YoKe.Controllers
 {
     public class HomeController : Controller
