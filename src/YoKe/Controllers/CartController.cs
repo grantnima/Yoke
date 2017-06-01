@@ -181,6 +181,14 @@ namespace FlowerWorld.Controllers
             return Index();
         }
 
+        [HttpPost]
+
+        public ActionResult Upload(Orders ord)
+        {
+
+            return Index();
+        }
+
         public RedirectResult updateCartRow(int id)
         {
             int value = int.Parse(Request.Query["value"].ToString());

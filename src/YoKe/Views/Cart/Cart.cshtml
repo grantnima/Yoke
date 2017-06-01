@@ -33,6 +33,26 @@
 			function _doStore(row, retUrl) {
 			    window.location.assign("/Cart/storeCartRow/" + row + "?retUrl=" + retUrl);
 			}
+			function _doEdit(row) {
+			    document.getElementById('edit_' + row).style.display = 'none';
+			    document.getElementById('update_' + row).style.display = 'block';
+			    document.getElementById('qtyDsp_' + row).style.display = 'none';
+			    document.getElementById('qtyIn_' + row).style.display = 'block';
+			}
+			function _doUpdate(row, oldvalue, retUrl) {
+			    var newValue = document.getElementById('inQty_' + row).value;
+			    if (newValue != oldvalue) {
+			        window.location.assign("/Cart/updateCartRow/" + row + "?value=" + newValue + "&retUrl=" + retUrl);
+			    }
+			    else
+			        _doCancel(row);
+			}
+			function _doCancel(row) {
+			    document.getElementById('edit_' + row).style.display = 'block';
+			    document.getElementById('update_' + row).style.display = 'none';
+			    document.getElementById('qtyDsp_' + row).style.display = 'block';
+			    document.getElementById('qtyIn_' + row).style.display = 'none';
+			}
 			
     </script>
 </head>
