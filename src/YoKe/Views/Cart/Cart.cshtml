@@ -667,107 +667,96 @@
                             <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
                             <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
                         </div>
-                        <form class="form-horizontal" role="form" method="post" action="register.php?act=adddemo" enctype="multipart/form-data" style="margin: 20px 0;">
+                        <form asp-controller="Cart" asp-action="Upload" class="form-horizontal" role="form" method="post"  enctype="multipart/form-data" style="margin: 20px 0;">
                             <!--图片上传-->
                             <hr>
                             <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
-                                            <img id="preview" src="~/images/fushi.jpg" width="150" height="180" style="display: block; width: 150px; height: 180px;">
-                                            <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
-                                                <input type="file" name="photoimg" id="photoimg" style="width:150px; opacity: 0;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--图片上传结束-->
-                            <!--任务详情-->
-                            <hr>
-                            <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-2 col-md-2 control-label ">关键字：</label>
+                                        <label asp-for="p.Feature" class="col-sm-2 col-md-2 control-label ">关键字：</label>
                                         <div class="col-sm-8 col-md-8">
-                                            <input type="text" class="form-control" name="key1" id="key1" placeholder="关键字">
+                                            <input asp-for="p.Feature" class="form-control" @*name="key1" id="key1" *@ placeholder="关键字">
+                                            <span asp-validation-for="p.Feature" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-2 col-md-2 control-label ">商品描述：</label>
+                                        <label asp-for="p.Description" class="col-sm-2 col-md-2 control-label ">商品描述：</label>
                                         <div class="col-sm-8 col-md-8">
-                                            <textarea class="form-control" rows="6"></textarea>
+                                            <textarea asp-for="p.Description" class="form-control" rows="6"></textarea>
+                                            <span asp-validation-for="p.Description" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 col-md-5 control-label">品牌：</label>
+                                        <label asp-for="p.ProductName" class="col-sm-5 col-md-5 control-label">名字：</label>
                                         <div class="col-sm-6 col-md-6">
-                                            <input type="text" class="form-control" name="key1" id="key1" placeholder="品牌">
+                                            <input asp-for="p.ProductName" class="form-control" @*name="key1" id="key1" *@ placeholder="名字">
+                                            <span asp-validation-for="p.ProductName" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
+                                @*<div class="col-md-4  col-sm-6">
+                <div class="form-group">
+                    <label for="input" class="col-sm-5 control-label">产地：</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="key2" id="key2" placeholder="产地">
+                    </div>
+                </div>
+            </div>*@
+                                @*<div class="col-md-4  col-sm-6">
+                <div class="form-group">
+                    <label for="input" class="col-sm-5 col-md-5 control-label">类别：</label>
+                    <div class="col-sm-6 col-md-6">
+                        <select class="form-control" name="commission" id="commission">
+                            <option selected="selected" value="3">化妆品</option>
+                            <option value="4">服饰</option>
+                            <option value="5">箱包</option>
+                            <option value="6">居家</option>
+                            <option value="7">配饰</option>
+                            <option value="8">数码电子</option>
+                            <option value="9">运动</option>
+                            <option value="10">母婴儿童</option>
+                            <option value="11">家纺</option>
+                            <option value="12">美食</option>
+                        </select>
+                    </div>
+                </div>
+            </div>*@
                                 <div class="col-md-4  col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 control-label">产地：</label>
+                                        <label asp-for="p.Price" class="col-sm-5 control-label">售价：</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="产地">
+                                            <input asp-for="p.Price" class="form-control" @*name="key2" id="key2" *@ placeholder="单位：RMB">
+                                            <span asp-validation-for="p.Price" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4  col-sm-6">
-                                    <div class="form-group">
-                                        <label for="input" class="col-sm-5 col-md-5 control-label">类别：</label>
-                                        <div class="col-sm-6 col-md-6">
-                                            <select class="form-control" name="commission" id="commission">
-                                                <option selected="selected" value="3">化妆品</option>
-                                                <option value="4">服饰</option>
-                                                <option value="5">箱包</option>
-                                                <option value="6">居家</option>
-                                                <option value="7">配饰</option>
-                                                <option value="8">数码电子</option>
-                                                <option value="9">运动</option>
-                                                <option value="10">母婴儿童</option>
-                                                <option value="11">家纺</option>
-                                                <option value="12">美食</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4  col-sm-6">
-                                    <div class="form-group">
-                                        <label for="input" class="col-sm-5 control-label">售价：</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="单位：RMB">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4  col-sm-6">
-                                    <div class="form-group">
-                                        <label for="input" class="col-sm-5 control-label">库存量：</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="key2" id="key2">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4  col-sm-6">
-                                    <div class="form-group">
-                                        <label for="input" class="col-sm-5 col-md-5 control-label">发货地：</label>
-                                        <div class="col-sm-6 col-md-6">
-                                            <select class="form-control" name="commission" id="commission">
-                                                <option selected="selected" value="3">1</option>
-                                                <option value="4">2</option>
-                                                <option value="5">3</option>
-                                                <option value="6">4</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                @*<div class="col-md-4  col-sm-6">
+                <div class="form-group">
+                    <label for="input" class="col-sm-5 control-label">库存量：</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="key2" id="key2">
+                    </div>
+                </div>
+            </div>*@
+                                @*<div class="col-md-4  col-sm-6">
+                <div class="form-group">
+                    <label for="input" class="col-sm-5 col-md-5 control-label">发货地：</label>
+                    <div class="col-sm-6 col-md-6">
+                        <select class="form-control" name="commission" id="commission">
+                            <option selected="selected" value="3">1</option>
+                            <option value="4">2</option>
+                            <option value="5">3</option>
+                            <option value="6">4</option>
+                        </select>
+                    </div>
+                </div>
+            </div>*@
                                 <div class="col-md-3  col-sm-4 col-md-offset-5 col-sm-offset-2">
-                                    <button type="submit" class="button button-glow button-border button-rounded button-primary " id="submitregister">发布商品</button>
+                                    <button type="submit" class="button button-glow button-border button-rounded button-primary " id="">发布商品</button>
                                 </div>
                                 <hr>
                             </div>
