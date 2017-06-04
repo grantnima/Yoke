@@ -18,5 +18,6 @@ namespace YoKe.Models
 
         public virtual ICollection<Orders> Orders { get; set; }
         public virtual ICollection<PlaceOrder> PlaceOrder { get; set; }
+        public virtual ICollection<Payment> Payment { get; set; }
     }
 }

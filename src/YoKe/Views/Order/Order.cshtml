@@ -1,0 +1,131 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model YoKe.Models.OrderViewModel
+@{
+    ViewBag.Title = "订单确认";
+    //Layout = null;
+    ViewBag.contBuy = "/";
+    int orderNo = 0;
+}
+@*@Html.HiddenFor(m => m.orderQty)*@
+ <script>
+     function paymentTypeSelected(obj) {
+         document.getElementById("paymentType").value = obj.value;
+         document.getElementById("paymentTypeName").innerText = obj.title;
+     }
+        function step2() {
+            if (document.getElementById("curStep").value != "step2") {
+                if (validateCurStepInput()) {
+                    document.getElementById("contactInfo").style.display = 'none';
+                    document.getElementById("receiverInfo").style.display = 'block';
+                    document.getElementById("paymentInfo").style.display = 'none';
+                    document.getElementById("assureInfo").style.display = 'none';
+                    document.getElementById("s1").style.background = 'white';
+                    document.getElementById("s2").style.background = '#BEBEBE';
+                    document.getElementById("s3").style.background = 'white';
+                    document.getElementById("s4").style.background = 'white';
+                    document.getElementById("curStep").value = "step2";
+                }
+            }
+        }
+        function step3() {
+                    document.getElementById("contactInfo").style.display = 'none';
+                    //document.getElementById("receiverInfo").style.display = 'none';
+                    document.getElementById("paymentInfo").style.display = 'block';
+                    document.getElementById("assureInfo").style.display = 'none';
+                    //document.getElementById("s1").style.background = 'white';
+                    //document.getElementById("s2").style.background = 'white';
+                    //document.getElementById("s3").style.background = '#BEBEBE';
+                    //document.getElementById("s4").style.background = 'white';
+                    //document.getElementById("curStep").value = "step3";
+        }
+        function step4() {
+                    document.getElementById("contactInfo").style.display = 'none';
+                    //document.getElementById("receiverInfo").style.display = 'none';
+                    document.getElementById("paymentInfo").style.display = 'none';
+                    document.getElementById("assureInfo").style.display = 'block';
+                    //document.getElementById("s1").style.background = 'white';
+                    //document.getElementById("s2").style.background = 'white';
+                    //document.getElementById("s3").style.background = 'white';
+                    //document.getElementById("s4").style.background = '#BEBEBE';
+                    //document.getElementById("curStep").value = "step4";
+        }
+        function doSubmit() { 
+                document.getElementById("orderForm").submit();
+        }
+    </script>
+<div style="margin-top:100px;"></div>
+<div class="col-md-5 col-md-offset-4">
+    <form id="orderForm" action="~/Order" method="post">
+        @*@Html.HiddenFor(m => m.orderQty)*@
+        <table>
+            <tr style="width:100%">
+                <td id="contentPages" style="width:82%;text-align:center;">
+                    <div id="contactInfo" style="display:block;">
+                        <h3>确认您的联系信息</h3>
+                        <table style="width:100%;font:14px;">
+                            <tr>
+                                <td class="right">@Html.LabelFor(m => m.curCustomer.MobilePhone)</td>
+                                <td class="left">@Html.TextBoxFor(m => m.curCustomer.MobilePhone, new { id = "txtMPhone" })@*<input type="text" id="txtMPhone" name="txtMPhone" value="@curUser.mobilePhone" />*@</td>
+                            </tr>
+                            <tr>
+                                <td class="right">@Html.LabelFor(m => m.curCustomer.Email)</td>
+                                <td class="left">@Html.TextBoxFor(m => m.curCustomer.Email, new { id = "txtEmail" })</td>
+                            </tr>
+                        </table>
+                        <input id="step3next" type="button" value="下一步" onclick="javascript: step3();" />
+                    </div>
+        </table>
+        <div id="paymentInfo" style="display:none;">
+            <h3>选择付款方式</h3>
+            <span>（付款金额：@Model.payment.Amount 元）</span><br /><br />
+            <input type="hidden" name="paymentAmt" value="@Model.payment.Amount" />
+            <input type="hidden" id="paymentType" name="paymentType" value="-1" />
+            @foreach (var p in ViewBag.payments)
+            {
+                <span><input type="radio" name="pType" id="pt_@p.ObjId" value="@p.ObjId" title="@p.TypeName" onclick="javascript:paymentTypeSelected(this);" /><a href="javascript:selePaymentType(@p.ObjId,'@p.TypeName');"><img src="/Images/@p.SmallImg" style="width:120px;height:30px; vertical-align:middle;" /></a></span><br />
+            }<br />
+            <input id="step3last" type="button" value="上一步" onclick="javascript: step2();" />
+            <input id="step3next" type="button" value="下一步" onclick="javascript: step4();" />
+        </div>
+        <div id="assureInfo" style="display:none;">
+            <h3>确认订单</h3>
+            <table border="1" style="width:100%;border: 1px solid black;text-align:left;border-width:1px;border-collapse:collapse;">
+                <tr>
+                    <td>
+                        客户联系信息：<br />
+                        移动电话&nbsp;<span id="custMobile">@Model.curCustomer.MobilePhone</span>;&nbsp;&nbsp;&nbsp;&nbsp;
+                        电子邮箱&nbsp;<span id="custEmail">@Model.curCustomer.Email</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        订单信息：<br />
+                        @{
+                            orderNo = 0;
+                            foreach (var order in Model.orders)
+                            {
+                                <span>订单</span><span>@orderNo</span><br />
+                                <span>商品详情——商品名称：</span>@order.productName<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br /><br />
+                                <input type="hidden" name="productId_@orderNo" value="@Model.orders[orderNo].theProduct"/>
+                                orderNo++;
+                            }
+
+
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        支付方式：<span id="paymentTypeName"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总金额：@Model.payment.Amount 元。
+                    </td>
+                </tr>
+            </table>
+            <input id="step4last" type="button" value="上一步" onclick="javascript: step3();" />
+            <input id="submitForm" type="button" value="确认付款" onclick="javascript: doSubmit();" />
+        </div>
+
+        </form>
+
+</div>

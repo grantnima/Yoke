@@ -39,10 +39,20 @@ namespace YoKe.Models
     public class OrderViewModel
     {
         public Customer curCustomer { get; set; }
-        
+        public Payment payment { get; set; }
         public List<OrderInfo> orders { get; set; }
         public int orderQty { get; set; }
     }
+    public class PayRequestInfo
+    {
+        public string PostUrl { get; set; }
+        public string MerId { get; set; }
+        public string Amt { get; set; }
+        public string PaymentTypeObjId { get; set; }
+        public string MerTransId { get; set; }
+        public string ReturnUrl { get; set; }
+        public string CheckValue { get; set; }
 
-    
+    }
+
 }
