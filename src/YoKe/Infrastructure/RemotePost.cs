@@ -8,7 +8,7 @@ using System.IO;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Http;
 
-namespace FlowerWorld.Infrastructure
+namespace Yoke.Infrastructure
 {
     /// <summary>
     /// RemotePost 的摘要说明

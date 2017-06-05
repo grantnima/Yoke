@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using YoKe.Models;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Http;
-using FlowerWorld.Infrastructure;
+using Yoke.Infrastructure;
 using Newtonsoft.Json;
 
-namespace FlowerWorld.Controllers
+namespace Yoke.Controllers
 {
     public class PaymentController : Controller
     {
@@ -27,7 +27,7 @@ namespace FlowerWorld.Controllers
             int paymentTypeObjId = int.Parse(Request.Form["paymentTypeObjId"]);
             PaymentType paymentMethod = db.PaymentType.Single(m => m.ObjId == paymentTypeObjId);
             //这里要根据paymentMethod的值构造验证类的实例，然后调用其验证方法。以下写法为暂时的，无扩展性。    
-            if (RemotePost.PaymentVerify(Request, out merId, out amt, out merTransId, out transId, out transTime) && merId == "Flower001")
+            if (RemotePost.PaymentVerify(Request, out merId, out amt, out merTransId, out transId, out transTime) && merId == "Team04")
             {
                 Payment pay = db.Payment.Single(m => m.ObjId == int.Parse(merTransId));
                 Orders[] orders = db.Orders.Where(m => m.ThePayment == int.Parse(merTransId)).ToArray<Orders>();

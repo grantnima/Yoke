@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using FlowerWorld.Infrastructure;
+using Yoke.Infrastructure;
 
 namespace YoKe.Controllers
 {
@@ -69,7 +69,8 @@ namespace YoKe.Controllers
                 EntityEntry<Payment> p = db.Payment.Add(new Payment());
                 p.Entity.Amount = double.Parse(Request.Form["paymentAmt"]);
                 p.Entity.ThePaymentType = int.Parse(Request.Form["paymentType"]);
-                p.Entity.PaymentState = 0;             
+                p.Entity.PaymentState = 0;
+                db.SaveChanges();
                 for (int i = 0; i < ovm.orderQty; i++)
                 {
                     EntityEntry<Orders> o = db.Orders.Add(new Orders());
@@ -79,6 +80,12 @@ namespace YoKe.Controllers
                     o.Entity.OrderState = 0;
                     o.Entity.OrderTime = DateTime.Now;
 
+                    //Orders o = db.Orders.Add(new Orders()).Entity;
+                    //o.ThePayment = p.Entity.ObjId;
+                    //o.TheCustomer = curCust.ObjId;
+                    //o.TheProduct = int.Parse(Request.Form["productId_" + i].ToString().Trim());
+                    //o.OrderState = 0;
+                    //o.OrderTime = DateTime.Now;
                     //}
                     db.SaveChanges();
                     payId = p.Entity.ObjId;
@@ -88,7 +95,8 @@ namespace YoKe.Controllers
             catch(Exception e)
             {
                 succeed = false;
-                Response.WriteAsync(e.ToString());
+                //Response.WriteAsync(e.ToString());
+                throw (e);
             }
             if (succeed)
             {//进入支付处理
@@ -113,7 +121,7 @@ namespace YoKe.Controllers
                 //await RemotePost.PaymentPost(HttpContext, paymentUrl, merchantId, returnUrl, Request.Form["paymentType"], amtStr, merTransId);
                 PayRequestInfo pri = new PayRequestInfo();
                 pri.Amt = Request.Form["paymentAmt"];
-                pri.MerId = "Flower001";
+                pri.MerId = "Team04";
                 pri.MerTransId = payId.ToString();
                 pri.PaymentTypeObjId = Request.Form["paymentType"];
                 pri.PostUrl = paymentUrl;
