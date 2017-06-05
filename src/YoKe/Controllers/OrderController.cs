@@ -74,7 +74,7 @@ namespace YoKe.Controllers
                 for (int i = 0; i < ovm.orderQty; i++)
                 {
                     EntityEntry<Orders> o = db.Orders.Add(new Orders());
-                    o.Entity.ThePayment = p.Entity.ObjId;
+                    o.Entity.ThePayment = p.Entity.ThePaymentType;
                     o.Entity.TheCustomer = curCust.ObjId;
                     o.Entity.TheProduct = int.Parse(Request.Form["productId_" + i].ToString().Trim());
                     o.Entity.OrderState = 0;
