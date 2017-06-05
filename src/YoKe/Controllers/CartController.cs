@@ -182,7 +182,6 @@ namespace FlowerWorld.Controllers
         }
 
         [HttpPost]
-
         public ActionResult Upload(Product p)
         {
             Product c = db.Product.Add(new Product()).Entity;
