@@ -123,7 +123,40 @@ namespace YoKe.Models
                     .HasForeignKey(d => d.TheProduct)
                     .HasConstraintName("FK__Orders__theProdu__1A14E395");
             });
+            modelBuilder.Entity<Payment>(entity =>
+            {
+                entity.HasKey(e => e.ObjId)
+                    .HasName("PK__Payment__787EE5A0");
 
+                entity.Property(e => e.ObjId).HasColumnName("objId");
+
+                entity.Property(e => e.AccountName)
+                    .HasColumnName("accountName")
+                    .HasColumnType("nchar(20)");
+
+                entity.Property(e => e.AccountNo)
+                    .HasColumnName("accountNo")
+                    .HasColumnType("nchar(24)");
+
+                entity.Property(e => e.Amount).HasColumnName("amount");
+
+                entity.Property(e => e.PaymentState).HasColumnName("paymentState");
+
+                entity.Property(e => e.ThePaymentType).HasColumnName("thePaymentType");
+
+                entity.Property(e => e.TransNo)
+                    .HasColumnName("transNo")
+                    .HasColumnType("nchar(16)");
+
+                entity.Property(e => e.TransTime)
+                    .HasColumnName("transTime")
+                    .HasColumnType("datetime");
+
+                entity.HasOne(d => d.ThePaymentTypeNavigation)
+                    .WithMany(p => p.Payment)
+                    .HasForeignKey(d => d.ThePaymentType)
+                    .HasConstraintName("FK__Payment__thePaym__797309D9");
+            });
             modelBuilder.Entity<PaymentType>(entity =>
             {
                 entity.HasKey(e => e.ObjId)
@@ -259,6 +292,7 @@ namespace YoKe.Models
         public virtual DbSet<CustomerType> CustomerType { get; set; }
         public virtual DbSet<Evaluate> Evaluate { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<PaymentType> PaymentType { get; set; }
         public virtual DbSet<PlaceOrder> PlaceOrder { get; set; }
         public virtual DbSet<Product> Product { get; set; }

@@ -8,7 +8,7 @@ using YoKe.Infrastructure;
 
 
 
-namespace FlowerWorld.Controllers
+namespace Yoke.Controllers
 {
     public class CartController : Controller
     {
