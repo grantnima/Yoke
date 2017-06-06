@@ -11,11 +11,14 @@ namespace YoKe.Models
     public class HomeIndexViewModel
     {
         public List<ProductList> Products { get; set; }
+        public List<PlaceOrder> POrders { get; set; }
     }
 
     public class ProductList
     {
         public Product p { get; set; }
+        public Orders o { get; set; }
+        public PlaceOrder po { get; set; }
     }
 
     public class CartItem

@@ -21,6 +21,8 @@ namespace Yoke.Controllers
         // GET: /Cart/
         public ActionResult Index()
         {
+            //List<Orders> or = db.Orders.Select<Orders, >;
+            var or = from m in db.Orders select m;
 
             if (Request.Query["retUrl"].ToString() != "")
             {
@@ -91,10 +93,12 @@ namespace Yoke.Controllers
 
                                          }).FirstOrDefault<CartItem>();
                 order.Add(cartItem);
+                InsertOrder(cartItem);
             }
             ViewBag.cart = cart;
             ViewBag.favi = favi;
             ViewBag.order = order;
+            ViewBag.or = or;
             return View("Cart");
         }
 
@@ -192,7 +196,33 @@ namespace Yoke.Controllers
             db.SaveChanges();
             return Index();
         }
+        [HttpPost]
+        public ActionResult UploadPlaceOrder(PlaceOrder po)
+        {
+            PlaceOrder c = db.PlaceOrder.Add(new PlaceOrder()).Entity;
+            c.Address = po.Address;
+            c.Brand = po.Brand;
+            c.Price = po.Price;
+            c.Producer = po.Producer;
+            c.Quantity = po.Quantity;
+            c.Remarks = po.Remarks;
+            c.TheProductName = po.TheProductName;
+            db.SaveChanges();
+            return Index();
+        }
 
+        public ActionResult TakeOrder(int id)
+        {
+
+            return Index();
+        }
+
+        public void InsertOrder(CartItem c)
+        {
+            Orders o = db.Orders.Add(new Orders()).Entity;
+            o.TheProduct = c.id;
+
+        }
         public RedirectResult updateCartRow(int id)
         {
             int value = int.Parse(Request.Query["value"].ToString());

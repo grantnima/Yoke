@@ -23,9 +23,11 @@ namespace YoKe.Controllers
         {
             HomeIndexViewModel ivm = new HomeIndexViewModel();
             ivm.Products = new List<ProductList>();
-            ProductList pp = new ProductList();
-            pp.p = new Product();
-            var Products = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price).Take<Product>(4);
+            ivm.POrders = new List<PlaceOrder>();
+            //ProductList pp = new ProductList();
+            //pp.p = new Product();
+            var Products = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price).Take<Product>(12);
+            var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
             foreach (var p in Products)
             {
                 ProductList pl = new ProductList();
@@ -36,6 +38,12 @@ namespace YoKe.Controllers
                 ivm.Products.Add(pl);
 
             }
+            foreach(var p in POrders)
+            {
+                PlaceOrder po = new PlaceOrder();
+                po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price,TheProductName = p.TheProductName };
+                ivm.POrders.Add(po);
+            }
             return View(ivm);
         }
 
@@ -45,6 +53,12 @@ namespace YoKe.Controllers
             pl.p = db.Product.Single<Product>(m => m.ObjId == id);
             
             return View(pl);
+        }
+        public IActionResult PDetail(int id)
+        {
+            PlaceOrder po = new PlaceOrder();
+            po = db.PlaceOrder.Single<PlaceOrder>(m => m.ObjId == id);
+            return View(po);
         }
         public IActionResult PersonalCenter()
         {

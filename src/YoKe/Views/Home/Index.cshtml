@@ -95,160 +95,19 @@
         </div>
     </div>
     <div id="myTabContent" class="tab-content container-fluid" style="background-color: #242424;">
-
-        <div class="tab-pane fade in active container" id="today1">
-            <div class="row" style="margin: 30px 0;">
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
+        @foreach (PlaceOrder po in Model.POrders)
+        {
+            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
+                <a href='/Home/PDetail/@po.ObjId'><img src="~/images/goods.jpg" class="imgstyle"></a>
+                <h3>@po.TheProductName</h3>
+                <h3>¥@po.Price</h3>
             </div>
-        </div>
-        <div class="tab-pane fade container " id="today2">
-            <div class="row" style="margin: 30px 0;">
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane fade container " id="today3">
-            <div class="row" style="margin: 30px 0;">
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 tab2">
-                    <img src="~/images/goods.jpg" class="imgstyle">
-                </div>
-            </div>
-        </div>
+        }
+        
     </div>
     <!--标签结束-->
     <!--热销推荐开始-->
-    @*<div class="container" style="border-bottom:1px solid red;margin-top:5%">
-        <h3 style="margin-left: -15px;font-family: '楷体';">热销推荐<b></b></h3>
-    </div>
-    <div class="container" style="margin-top:30px;">
-        <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <a asp-action="Message"><img src="~/images/goods.jpg" class="imgstyle"></a>
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-        </div>
-    </div>
-    <div class="container" style="padding: 0;">
-        <div class="row" style="margin:  0;">
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-        </div>
-    </div>
-    <div class="container" style="padding: 0;">
-        <div class="row" style="margin:  0;">
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-        </div>
-    </div>
-    <div class="container" style="padding: 0;">
-        <div class="row" style="margin:  0;">
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <img src="~/images/goods.jpg" class="imgstyle">
-                <h3>¥19.9</h3>
-            </div>
-        </div>
-        <nav aria-label="Page navigation " style="width: 320px;margin: 0 auto;">
-            <ul class="pagination pagination-lg">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>*@
+    
 <div class="container" style="padding: 0;">
     <div class="row" style="margin:  0;">
 @foreach (ProductList pl in Model.Products)

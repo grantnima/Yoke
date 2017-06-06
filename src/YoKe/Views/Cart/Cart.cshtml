@@ -186,15 +186,15 @@
                                     <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
                                     <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                 </div>
-@foreach (var cartItem in ViewBag.order as List<CartItem>)
+@foreach (var cartItem in ViewBag.or )
 {
                                 <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
                                     <div class="col-md-2 col-sm-2  textbold margintop20">
                                         <img src="~/images/fushi.jpg" width="100px">
                                     </div>
-                                    <div class="col-md-2 col-sm-2 textcenter margintop20">@cartItem.productName</div>
-                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥@cartItem.price</div>
-                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">@cartItem.qty</div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">@cartItem.ObjId</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥</div>
+                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20"></div>
                                     <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
                                     <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待付款<br>订单详情</div>
                                     <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
@@ -535,7 +535,7 @@
                             <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
                             <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
                         </div>
-                        <form class="form-horizontal" role="form" method="post" action="register.php?act=adddemo" enctype="multipart/form-data" style="margin: 20px 0;">
+                        <form asp-controller="Cart" asp-action="UploadPlaceOrder" class="form-horizontal" role="form" method="post"  enctype="multipart/form-data" style="margin: 20px 0;">
                             <!--图片上传-->
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -555,23 +555,23 @@
                             <div class="row">
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 col-md-5 control-label">品牌：</label>
+                                        <label asp-for="po.Brand" class="col-sm-5 col-md-5 control-label">品牌：</label>
                                         <div class="col-sm-6 col-md-6">
-                                            <input type="text" class="form-control" name="key1" id="key1" placeholder="品牌">
+                                            <input asp-for="po.Brand" type="text" class="form-control" @*name="key1" id="key1"*@ placeholder="品牌">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4  col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 control-label">产地：</label>
+                                        <label asp-for="po.Producer" class="col-sm-5 control-label">产地：</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="产地">
+                                            <input asp-for="po.Producer" type="text" class="form-control"  placeholder="产地">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4  col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 col-md-5 control-label">类别：</label>
+                                        <label for="select" class="col-sm-5 col-md-5 control-label">类别：</label>
                                         <div class="col-sm-6 col-md-6">
                                             <select class="form-control" name="commission" id="commission">
                                                 <option selected="selected" value="3">化妆品</option>
@@ -590,38 +590,33 @@
                                 </div>
                                 <div class="col-md-4  col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 control-label">商品名称：</label>
+                                        <label asp-for="po.TheProductName" class="col-sm-5 control-label">商品名称：</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="商品名称">
+                                            <input asp-for="po.TheProductName" type="text" class="form-control"  placeholder="商品名称">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4  col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 control-label">备注：</label>
+                                        <label asp-for="po.Remarks" class="col-sm-5 control-label">备注：</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="备注">
+                                            <input asp-for="po.Remarks" type="text" class="form-control" placeholder="备注">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4  col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 control-label">出价：</label>
+                                        <label asp-for="po.Price" class="col-sm-5 control-label">出价：</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="key2" id="key2" placeholder="出价（RMB）">
+                                            <input asp-for="po.Price" type="text" class="form-control" placeholder="出价（RMB）">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4  col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 col-md-5 control-label">收货地址：</label>
+                                        <label asp-for="po.Address" class="col-sm-5 col-md-5 control-label">收货地址：</label>
                                         <div class="col-sm-6 col-md-6">
-                                            <select class="form-control" name="commission" id="commission">
-                                                <option selected="selected" value="3">收货地址1</option>
-                                                <option value="4">收货地址2</option>
-                                                <option value="5">收货地址3</option>
-                                                <option value="6">收货地址4</option>
-                                            </select>
+                                            <textarea asp-for="po.Address" class="form-control" rows="6"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -640,14 +635,9 @@
                                 </div>
                                 <div class="col-md-4  col-sm-6">
                                     <div class="form-group">
-                                        <label for="input" class="col-sm-5 col-md-5 control-label">购买数量：</label>
+                                        <label asp-for="po.Quantity" class="col-sm-5 col-md-5 control-label">购买数量：</label>
                                         <div class="col-sm-6 col-md-6">
-                                            <select class="form-control" name="commission" id="commission">
-                                                <option selected="selected" value="3">1</option>
-                                                <option value="4">2</option>
-                                                <option value="5">3</option>
-                                                <option value="6">4</option>
-                                            </select>
+                                            <input asp-for="po.Quantity" type="text" class="form-control" placeholder="数量">
                                         </div>
                                     </div>
                                 </div>
@@ -669,6 +659,19 @@
                         </div>
                         <form asp-controller="Cart" asp-action="Upload" class="form-horizontal" role="form" method="post"  enctype="multipart/form-data" style="margin: 20px 0;">
                             <!--图片上传-->
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
+                                            <img id="preview" src="~/images/fushi.jpg" width="150" height="180" style="display: block; width: 150px; height: 180px;">
+                                            <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
+                                                <input type="file" name="photoimg" id="photoimg" style="width:150px; opacity: 0;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--图片上传结束-->
                             <hr>
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
