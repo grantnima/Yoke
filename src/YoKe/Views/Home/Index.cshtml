@@ -254,10 +254,10 @@
 @foreach (ProductList pl in Model.Products)
 {
         <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-            <a href='/Home/Detail/@pl.p.ObjId'><img src="~/images/goods.jpg" class="imgstyle"></a>
-            <h3>@pl.p.ProductName</h3>
-            <h3>¥@pl.p.Price</h3>
-        </div>
+            <a href='/Home/Detail/@pl.ObjId'><img src="~/images/goods.jpg" class="imgstyle"></a>
+            <h3>@pl.ProductName</h3>
+            <h3>¥@pl.Price</h3>
+        </div>     
 }
     </div>
     <nav aria-label="Page navigation " style="width: 320px;margin: 0 auto;">
@@ -267,11 +267,7 @@
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+            <li page-model="@Model.PagingInfo" page-action="Index"></li>
             <li>
                 <a href="#" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>

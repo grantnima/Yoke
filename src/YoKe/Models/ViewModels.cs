@@ -11,11 +11,15 @@ namespace YoKe.Models
     public class HomeIndexViewModel
     {
         public List<ProductList> Products { get; set; }
+        public PagingInfo PagingInfo { get; set; }
     }
 
     public class ProductList
     {
+        public int ObjId { get; set; }
         public Product p { get; set; }
+        public string ProductName { get; set; }
+        public double? Price { get; set; }
     }
 
     public class CartItem
@@ -54,5 +58,11 @@ namespace YoKe.Models
         public string CheckValue { get; set; }
 
     }
-
+    public class PagingInfo
+    {
+        public int TotalItems { get; set; }
+        public int ItemsPerPage { get; set; }
+        public int CurrentPage { get; set; }
+        public int TotalPages => (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage);
+    }
 }

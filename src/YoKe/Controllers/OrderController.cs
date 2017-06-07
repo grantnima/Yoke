@@ -92,11 +92,10 @@ namespace YoKe.Controllers
                     //ts.Complete();
                 }
             }
-            catch(Exception e)
+            catch
             {
                 succeed = false;
-                //Response.WriteAsync(e.ToString());
-                throw (e);
+                Response.WriteAsync("数据保存失败，请重新操作！");
             }
             if (succeed)
             {//进入支付处理

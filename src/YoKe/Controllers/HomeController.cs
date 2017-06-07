@@ -19,23 +19,29 @@ namespace YoKe.Controllers
         {
             db = yokedb;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page =1,int pageSize = 4)
         {
             HomeIndexViewModel ivm = new HomeIndexViewModel();
             ivm.Products = new List<ProductList>();
-            ProductList pp = new ProductList();
-            pp.p = new Product();
-            var Products = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price).Take<Product>(4);
-            foreach (var p in Products)
+            //ProductList pp = new ProductList();
+            //pp.p = new Product();
+            //var Products = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price).Take<Product>(4);
+            var productlist = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price);
+            var Products = productlist.Skip((page - 1) * pageSize).Take(pageSize);
+            foreach (var o in Products)
             {
-                ProductList pl = new ProductList();
-                pl.p = new Product { ObjId = p.ObjId, ProductName = p.ProductName, BigImg = p.BigImg, Price = p.Price };
-
-
-
-                ivm.Products.Add(pl);
-
+                ivm.Products.Add(new ProductList
+                {
+                    ObjId = o.ObjId,
+                    ProductName = o.ProductName,
+                    Price = o.Price
+                });
+                //ProductList pl = new ProductList();
+                //pl.p = new Product { ObjId = p.ObjId, ProductName = p.ProductName, BigImg = p.BigImg, Price = p.Price };
+                //ivm.Products.Add(pl);
+                
             }
+            ivm.PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = productlist.Count() };
             return View(ivm);
         }
 
