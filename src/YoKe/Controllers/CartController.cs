@@ -21,6 +21,15 @@ namespace Yoke.Controllers
         // GET: /Cart/
         public ActionResult Index()
         {
+            //ProductList pro = new ProductList();
+            //pro.POrders = new List<PlaceOrder>();
+            //var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0);
+            //foreach (var p in POrders)
+            //{
+            //    PlaceOrder po = new PlaceOrder();
+            //    po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price, TheProductName = p.TheProductName };
+            //    pro.POrders.Add(po);
+            //}
             //List<Orders> or = db.Orders.Select<Orders, >;
             var or = from m in db.Orders select m;
 
@@ -99,6 +108,7 @@ namespace Yoke.Controllers
             ViewBag.favi = favi;
             ViewBag.order = order;
             ViewBag.or = or;
+
             return View("Cart");
         }
 
@@ -198,8 +208,9 @@ namespace Yoke.Controllers
         }
         [HttpPost]
         public ActionResult UploadPlaceOrder(PlaceOrder po)
-        {
+        {          
             PlaceOrder c = db.PlaceOrder.Add(new PlaceOrder()).Entity;
+            c.TheCustomer = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
             c.Address = po.Address;
             c.Brand = po.Brand;
             c.Price = po.Price;
@@ -210,7 +221,27 @@ namespace Yoke.Controllers
             db.SaveChanges();
             return Index();
         }
+        //public ActionResult ShowMyPlaceOrder()
+        //{
+        //    ProductList pro = new ProductList();
+        //    pro.POrders = new List<PlaceOrder>();
 
+        //    ProductList pro = new ProductList();
+        //    pro.PlaceOrders = new List<PlacceOrderList>();
+        //    //db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price);
+        //    var PlaceOrders = db.PlaceOrder.Where<PlaceOrder>(m => m.TheCustomer == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
+        //    foreach (var pl in PlaceOrders)
+        //    {
+        //        pro.PlaceOrders.Add(new PlacceOrderList
+        //        {
+        //            ProductName = pl.TheProductName,
+        //            Price = pl.Price,
+        //            Quantity = pl.Quantity,
+        //            theCustomer = pl.TheCustomer
+        //        });
+        //    }
+        //    return View();
+        //}
         public ActionResult TakeOrder(int id)
         {
 
