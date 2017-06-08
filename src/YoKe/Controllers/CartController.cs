@@ -24,6 +24,7 @@ namespace Yoke.Controllers
             ProductList pro = new ProductList();
             pro.POrders = new List<PlaceOrder>();
             var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.TheCustomer == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
+            //var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
             var theCustomerId = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
             foreach (var p in POrders)
             {
@@ -204,7 +205,9 @@ namespace Yoke.Controllers
             c.Feature = p.Feature;
             c.Description = p.Description;
             c.Price = p.Price;
-            //c.TheCustomer = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
+            c.BigImg = Request.Form["photoimg"];
+            c.ProductType = Request.Form["commission"];
+            c.TheCustomer = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
             db.SaveChanges();
             return Index();
         }

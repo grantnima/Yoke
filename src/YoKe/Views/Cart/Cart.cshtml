@@ -657,7 +657,7 @@
                             <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
                             <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
                         </div>
-                        <form asp-controller="Cart" asp-action="Upload" class="form-horizontal" role="form" method="post"  enctype="multipart/form-data" style="margin: 20px 0;">
+                        <form asp-controller="Cart" asp-action="Upload" class="form-horizontal" role="form" method="post" style="margin: 20px 0;">
                             <!--图片上传-->
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -665,7 +665,7 @@
                                         <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
                                             <img id="preview" src="~/images/fushi.jpg" width="150" height="180" style="display: block; width: 150px; height: 180px;">
                                             <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
-                                                <input type="file" name="photoimg" id="photoimg" style="width:150px; opacity: 0;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
+                                                <input type="file" name="photoimg" id="photoimg" style="width:150px;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
                                             </div>
                                         </div>
                                     </div>
@@ -682,7 +682,9 @@
                                             <span asp-validation-for="p.Feature" class="text-danger"></span>
                                         </div>
                                     </div>
+
                                 </div>
+
                                 <div class="col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <label asp-for="p.Description" class="col-sm-2 col-md-2 control-label ">商品描述：</label>
@@ -701,6 +703,27 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="select" class="col-sm-5 col-md-5 control-label">类别：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <select class="form-control" name="commission" id="commission">
+                                                <option selected="selected" value="化妆品">化妆品</option>
+                                                <option value="服饰">服饰</option>
+                                                <option value="箱包">箱包</option>
+                                                <option value="居家">居家</option>
+                                                <option value="配饰">配饰</option>
+                                                <option value="数码电子">数码电子</option>
+                                                <option value="运动">运动</option>
+                                                <option value="母婴儿童">母婴儿童</option>
+                                                <option value="家纺">家纺</option>
+                                                <option value="美食">美食</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 @*<div class="col-md-4  col-sm-6">
                 <div class="form-group">
                     <label for="input" class="col-sm-5 control-label">产地：</label>
@@ -817,12 +840,13 @@
                                     </div>
                                 </div>
                             </div>
-                            @foreach (var po in Model.POrders)
-                            {
+                            
                                 <div role="tabpanel" class="tab-pane fade " id="user-tab5-tab2">
+                                @foreach (var po in Model.POrders)
+                                {
                                     <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
                                         <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
-                                        <div class="col-md-4 col-sm-4  ">用户ID：@po.TheCustomer </div>
+                                        <div class="col-md-4 col-sm-4  ">用户ID：@po.TheCustomer</div>
                                         <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>用户ID：@po.TheCustomer</div>
                                         <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                     </div>
@@ -840,10 +864,10 @@
                                             <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">确认完成</button>
                                         </div>
                                     </div>
+                                }
                                 </div>
-
-                            }
                             
+                                           
                         </div>
                     </div>
                     <!--我的发布发布标签结束-->
