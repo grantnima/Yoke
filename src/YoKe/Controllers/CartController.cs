@@ -22,7 +22,7 @@ namespace Yoke.Controllers
         public ActionResult Index()
         {
             //List<Orders> or = db.Orders.Select<Orders, >;
-            var or = from m in db.Orders select m;
+            var or =  from m in db.Orders select m;
 
             if (Request.Query["retUrl"].ToString() != "")
             {
