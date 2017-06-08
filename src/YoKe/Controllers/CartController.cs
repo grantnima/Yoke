@@ -32,6 +32,15 @@ namespace Yoke.Controllers
                 po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price, TheProductName = p.TheProductName, TheCustomer = theCustomerId, Remarks = p.Remarks };
                 pro.POrders.Add(po);
             }
+            //我的发布--商品
+            pro.PProducts = new List<Product>();
+            var PProducts = db.Product.Where<Product>(m => m.TheCustomer == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
+            foreach (var pp in PProducts)
+            {
+                Product product = new Product();
+                product = new Product { ProductName = pp.ProductName, Feature = pp.Feature, Price = pp.Price, TheCustomer = theCustomerId };
+                pro.PProducts.Add(product);
+            }
             //List<Orders> or = db.Orders.Select<Orders, >;
             var or = from m in db.Orders select m;
 

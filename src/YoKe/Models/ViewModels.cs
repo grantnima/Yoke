@@ -20,6 +20,7 @@ namespace YoKe.Models
         public int ObjId { get; set; }
         public Product p { get; set; }
         public Orders o { get; set; }
+        public List<Product> PProducts { get; set; }
         public PlaceOrder po { get; set; }
         public List<PlaceOrder> POrders { get; set; }
         //public List<PlacceOrderList> PlaceOrders { get; set; }
