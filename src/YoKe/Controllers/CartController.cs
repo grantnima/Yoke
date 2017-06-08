@@ -21,15 +21,16 @@ namespace Yoke.Controllers
         // GET: /Cart/
         public ActionResult Index()
         {
-            //ProductList pro = new ProductList();
-            //pro.POrders = new List<PlaceOrder>();
-            //var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0);
-            //foreach (var p in POrders)
-            //{
-            //    PlaceOrder po = new PlaceOrder();
-            //    po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price, TheProductName = p.TheProductName };
-            //    pro.POrders.Add(po);
-            //}
+            ProductList pro = new ProductList();
+            pro.POrders = new List<PlaceOrder>();
+            var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.TheCustomer == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
+            var theCustomerId = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
+            foreach (var p in POrders)
+            {
+                PlaceOrder po = new PlaceOrder();
+                po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price, TheProductName = p.TheProductName, TheCustomer = theCustomerId, Remarks = p.Remarks };
+                pro.POrders.Add(po);
+            }
             //List<Orders> or = db.Orders.Select<Orders, >;
             var or = from m in db.Orders select m;
 
@@ -109,7 +110,7 @@ namespace Yoke.Controllers
             ViewBag.order = order;
             ViewBag.or = or;
 
-            return View("Cart");
+            return View("Cart",pro);
         }
 
         public ActionResult AddCart(int id)
@@ -203,6 +204,7 @@ namespace Yoke.Controllers
             c.Feature = p.Feature;
             c.Description = p.Description;
             c.Price = p.Price;
+            //c.TheCustomer = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
             db.SaveChanges();
             return Index();
         }

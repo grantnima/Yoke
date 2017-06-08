@@ -20,6 +20,7 @@ namespace YoKe.Models
         public string SmallImg { get; set; }
         public string BigImg { get; set; }
         public int? ProductState { get; set; }
+        //public int TheCustomer { get; set; }
 
         public virtual ICollection<Evaluate> Evaluate { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }
