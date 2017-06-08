@@ -12,13 +12,28 @@ namespace YoKe.Models
     {
         public List<ProductList> Products { get; set; }
         public List<PlaceOrder> POrders { get; set; }
+        public PagingInfo PagingInfo { get; set; }
     }
 
     public class ProductList
     {
+        public int ObjId { get; set; }
         public Product p { get; set; }
         public Orders o { get; set; }
         public PlaceOrder po { get; set; }
+        public List<PlaceOrder> POrders { get; set; }
+        //public List<PlacceOrderList> PlaceOrders { get; set; }
+        public string ProductName { get; set; }
+        public double? Price { get; set; }
+    }
+    public class PlacceOrderList
+    {
+        public PlaceOrder plo { get; set; }
+        public string ProductName { get; set; }
+        public int? Quantity { get; set; }
+        public string Remarks { get; set; }
+        public double? Price { get; set; }
+        public int? theCustomer { get; set; }
     }
 
     public class CartItem
@@ -57,5 +72,11 @@ namespace YoKe.Models
         public string CheckValue { get; set; }
 
     }
-
+    public class PagingInfo
+    {
+        public int TotalItems { get; set; }
+        public int ItemsPerPage { get; set; }
+        public int CurrentPage { get; set; }
+        public int TotalPages => (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage);
+    }
 }

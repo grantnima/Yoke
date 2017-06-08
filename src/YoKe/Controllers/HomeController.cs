@@ -19,31 +19,37 @@ namespace YoKe.Controllers
         {
             db = yokedb;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1,int pageSize = 4)
         {
             HomeIndexViewModel ivm = new HomeIndexViewModel();
             ivm.Products = new List<ProductList>();
             ivm.POrders = new List<PlaceOrder>();
             //ProductList pp = new ProductList();
             //pp.p = new Product();
-            var Products = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price).Take<Product>(12);
+            //var Products = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price).Take<Product>(12);
             var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
-            foreach (var p in Products)
+            var productlist = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price);
+            var Products = productlist.Skip((page - 1) * pageSize).Take(pageSize);
+            foreach (var o in Products)
             {
-                ProductList pl = new ProductList();
-                pl.p = new Product { ObjId = p.ObjId, ProductName = p.ProductName, BigImg = p.BigImg, Price = p.Price };
-
-
-
-                ivm.Products.Add(pl);
+                ivm.Products.Add(new ProductList
+                {
+                    ObjId = o.ObjId,
+                    ProductName = o.ProductName,
+                    Price = o.Price
+                });
+                //ProductList pl = new ProductList();
+                //pl.p = new Product { ObjId = p.ObjId, ProductName = p.ProductName, BigImg = p.BigImg, Price = p.Price };
+                //ivm.Products.Add(pl);
 
             }
-            foreach(var p in POrders)
+            foreach (var p in POrders)
             {
                 PlaceOrder po = new PlaceOrder();
                 po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price,TheProductName = p.TheProductName };
                 ivm.POrders.Add(po);
             }
+            ivm.PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = productlist.Count() };
             return View(ivm);
         }
 

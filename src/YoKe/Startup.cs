@@ -42,7 +42,7 @@ namespace YoKe
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Yoke_Database\YoKeDB_data.mdf;Integrated Security=True;Connect Timeout=30";
+            var connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Database\YoKeDB\YoKeDB_data.mdf;Integrated Security=True;Connect Timeout=30";
 
             services.AddDbContext<YoKeDB_dataContext>(options => options.UseSqlServer(connection));
 
