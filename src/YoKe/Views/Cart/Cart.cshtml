@@ -685,7 +685,9 @@
                                             <span asp-validation-for="p.Feature" class="text-danger"></span>
                                         </div>
                                     </div>
+
                                 </div>
+
                                 <div class="col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <label asp-for="p.Description" class="col-sm-2 col-md-2 control-label ">商品描述：</label>
@@ -704,6 +706,27 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="select" class="col-sm-5 col-md-5 control-label">类别：</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <select class="form-control" name="commission" id="commission">
+                                                <option selected="selected" value="化妆品">化妆品</option>
+                                                <option value="服饰">服饰</option>
+                                                <option value="箱包">箱包</option>
+                                                <option value="居家">居家</option>
+                                                <option value="配饰">配饰</option>
+                                                <option value="数码电子">数码电子</option>
+                                                <option value="运动">运动</option>
+                                                <option value="母婴儿童">母婴儿童</option>
+                                                <option value="家纺">家纺</option>
+                                                <option value="美食">美食</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 @*<div class="col-md-4  col-sm-6">
                 <div class="form-group">
                     <label for="input" class="col-sm-5 control-label">产地：</label>
@@ -796,51 +819,59 @@
                             <div class="col-md-2 col-sm-2 textcenter textbold">好评率</div>
                             <div class="col-md-2 col-sm-2 textcenter textbold">操作</div>
                         </div>
-                        <div class="tab-content">
+                        <div class="tab-content">                       
                             <div role="tabpanel" class="tab-pane fade in active" id="user-tab5-tab1">
-                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
-                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
-                                    <div class="col-md-4 col-sm-4  ">商品编号：5705663010619 </div>
-                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span></div>
-                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>置顶</div>
-                                </div>
-                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
-                                    <div class="col-md-2 col-sm-2  textbold margintop20">
-                                        <img src="~/images/fushi.jpg" width="100px">
+                                @foreach (var pp in Model.PProducts)
+                                {
+                                    <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                        <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                        <div class="col-md-4 col-sm-4  ">商品名称：@pp.ProductName </div>
+                                        <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>用户ID：@pp.TheCustomer</div>
+                                        <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>置顶</div>
                                     </div>
-                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
-                                    <div class="col-md-1 col-sm-1 textcenter margintop20">999</div>
-                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">99</div>
-                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
-                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;"><a href="#" style="color: orange;">98%</a></div>
-                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
-                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">查看详情</button>
-                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">下架商品</button>
+                                    <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                        <div class="col-md-2 col-sm-2  textbold margintop20">
+                                            <img src="~/images/fushi.jpg" width="100px">
+                                        </div>
+                                        <div class="col-md-2 col-sm-2 textcenter margintop20">@pp.Feature</div>
+                                        <div class="col-md-1 col-sm-1 textcenter margintop20">999</div>
+                                        <div class="col-md-1 col-sm-1  text-center textbold margintop20">99</div>
+                                        <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥@pp.Price<br>包邮</div>
+                                        <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;"><a href="#" style="color: orange;">98%</a></div>
+                                        <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                            <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">查看详情</button>
+                                            <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">下架商品</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade " id="user-tab5-tab2">
-                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
-                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
-                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
-                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
-                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
-                                </div>
-                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
-                                    <div class="col-md-2 col-sm-2  textbold margintop20">
-                                        <img src="~/images/fushi.jpg" width="100px">
+                                }                            
+                            </div>                        
+                                <div role="tabpanel" class="tab-pane fade " id="user-tab5-tab2">
+                                @foreach (var po in Model.POrders)
+                                {
+                                    <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                        <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                        <div class="col-md-4 col-sm-4  ">用户ID：@po.TheCustomer</div>
+                                        <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>用户ID：@po.TheCustomer</div>
+                                        <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                     </div>
-                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
-                                    <div class="col-md-1 col-sm-1 textcenter margintop20">泰国</div>
-                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
-                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
-                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已接受<br>广东珠海<br><a href="#" style="color: orange;">查看物流</a></div>
-                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
-                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">删除请求</button>
-                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">确认完成</button>
+                                    <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                        <div class="col-md-2 col-sm-2  textbold margintop20">
+                                            <img src="~/images/fushi.jpg" width="100px">
+                                        </div>
+                                        <div class="col-md-2 col-sm-2 textcenter margintop20">@po.Remarks</div>
+                                        <div class="col-md-1 col-sm-1 textcenter margintop20">泰国</div>
+                                        <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                        <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥@po.Price<br>包邮</div>
+                                        <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已接受<br>广东珠海<br><a href="#" style="color: orange;">查看物流</a></div>
+                                        <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                            <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">删除请求</button>
+                                            <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">确认完成</button>
+                                        </div>
                                     </div>
+                                }
                                 </div>
-                            </div>
+                            
+                                           
                         </div>
                     </div>
                     <!--我的发布发布标签结束-->

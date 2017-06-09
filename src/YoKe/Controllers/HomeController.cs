@@ -67,6 +67,20 @@ namespace YoKe.Controllers
             po = db.PlaceOrder.Single<PlaceOrder>(m => m.ObjId == id);
             return View(po);
         }
+        public IActionResult Catalog(string typeName)
+        {
+            ProductList pro = new ProductList();
+            pro.Catproduct = new List<Product>();         
+            var products = db.Product.Where<Product>(m => m.ProductType == typeName);
+            foreach (var p in products)
+            {
+                Product product = new Product();
+                product= new Product { ProductName = p.ProductName,Price = p.Price};
+                pro.Catproduct.Add(product);
+            }
+            ViewBag.title = typeName;
+            return View(pro);
+        }
         public IActionResult PersonalCenter()
         {
             
