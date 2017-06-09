@@ -660,7 +660,7 @@
                             <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
                             <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
                         </div>
-                        <form asp-controller="Cart" asp-action="Upload" class="form-horizontal" role="form" method="post" enctype="multipart/form-data" style="margin: 20px 0;">
+                       <form asp-controller="Cart" asp-action="Upload" class="form-horizontal" role="form" method="post" style="margin: 20px 0;">
                             <!--图片上传-->
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -668,7 +668,7 @@
                                         <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
                                             <img id="preview" src="~/images/fushi.jpg" width="150" height="180" style="display: block; width: 150px; height: 180px;">
                                             <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
-                                                <input type="file" asp-for="PImg" @*name="photoimg" id="photoimg"*@ style="width:150px; height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
+                                               <input type="file" name="photoimg" id="photoimg" style="width:150px;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
                                             </div>
                                         </div>
                                     </div>
