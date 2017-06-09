@@ -36,7 +36,8 @@ namespace YoKe.Controllers
                 {
                     ObjId = o.ObjId,
                     ProductName = o.ProductName,
-                    Price = o.Price
+                    Price = o.Price,
+                    img = o.BigImg
                 });
                 //ProductList pl = new ProductList();
                 //pl.p = new Product { ObjId = p.ObjId, ProductName = p.ProductName, BigImg = p.BigImg, Price = p.Price };

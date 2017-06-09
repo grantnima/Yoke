@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using YoKe.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace YoKe.Models
 {
@@ -25,6 +26,8 @@ namespace YoKe.Models
         //public List<PlacceOrderList> PlaceOrders { get; set; }
         public string ProductName { get; set; }
         public double? Price { get; set; }
+        public string img { get; set; }
+        public IFormFile PImg { get; set; }
     }
     public class PlacceOrderList
     {

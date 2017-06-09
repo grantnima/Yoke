@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 
 namespace YoKe.Models
@@ -20,6 +21,7 @@ namespace YoKe.Models
         public string SmallImg { get; set; }
         public string BigImg { get; set; }
         public int? ProductState { get; set; }
+        //public IFormFile PImg { get; set; }
 
         public virtual ICollection<Evaluate> Evaluate { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }

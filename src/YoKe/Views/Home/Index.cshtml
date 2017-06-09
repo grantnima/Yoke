@@ -113,7 +113,7 @@
 @foreach (ProductList pl in Model.Products)
 {
         <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-            <a href='/Home/Detail/@pl.ObjId'><img src="~/images/goods.jpg" class="imgstyle"></a>
+            <a href='/Home/Detail/@pl.ObjId'><img src="~/@pl.img" class="imgstyle"></a>
             <h3>@pl.ProductName</h3>
             <h3>¥@pl.Price</h3>
         </div>

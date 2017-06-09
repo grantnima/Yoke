@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using YoKe.Models;
 using Microsoft.AspNetCore.Http;
 using YoKe.Infrastructure;
-
-
-
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System;
 
 namespace Yoke.Controllers
 {
@@ -196,13 +196,24 @@ namespace Yoke.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload(Product p)
+        public ActionResult Upload([FromServices]IHostingEnvironment env, ProductList pl)
         {
+            var fileName = Path.Combine("upload", DateTime.Now.ToString("MMddHHmmss") + ".jpg");
+            using (var stream = new FileStream(Path.Combine(env.WebRootPath, fileName), FileMode.CreateNew))
+            {
+                pl.PImg.CopyTo(stream);
+            }
+
+
+
+
+
             Product c = db.Product.Add(new Product()).Entity;
-            c.ProductName = p.ProductName;
-            c.Feature = p.Feature;
-            c.Description = p.Description;
-            c.Price = p.Price;
+            c.ProductName = pl.p.ProductName;
+            c.Feature = pl.p.Feature;
+            c.Description = pl.p.Description;
+            c.Price = pl.p.Price;
+            c.BigImg = fileName;
             db.SaveChanges();
             return Index();
         }
@@ -218,6 +229,7 @@ namespace Yoke.Controllers
             c.Quantity = po.Quantity;
             c.Remarks = po.Remarks;
             c.TheProductName = po.TheProductName;
+            
             db.SaveChanges();
             return Index();
         }
