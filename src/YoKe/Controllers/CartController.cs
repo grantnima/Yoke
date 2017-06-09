@@ -209,11 +209,13 @@ namespace Yoke.Controllers
 
 
             Product c = db.Product.Add(new Product()).Entity;
-            c.ProductName = pl.p.ProductName;
-            c.Feature = pl.p.Feature;
-            c.Description = pl.p.Description;
-            c.Price = pl.p.Price;
-            c.BigImg = fileName;
+            c.ProductName = p.ProductName;
+            c.Feature = p.Feature;
+            c.Description = p.Description;
+            c.Price = p.Price;
+            c.BigImg = Request.Form["photoimg"];
+            c.ProductType = Request.Form["commission"];
+            c.TheCustomer = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
             db.SaveChanges();
             return Index();
         }
