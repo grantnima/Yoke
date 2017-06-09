@@ -668,7 +668,7 @@
                                         <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
                                             <img id="preview" src="~/images/fushi.jpg" width="150" height="180" style="display: block; width: 150px; height: 180px;">
                                             <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
-                                                <input type="file" name="photoimg" id="photoimg" style="width:150px;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
+                                                <input asp-for="PImg" type="file" @*name="photoimg" id="photoimg"*@ style="width:150px;height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
                                             </div>
                                         </div>
                                     </div>
