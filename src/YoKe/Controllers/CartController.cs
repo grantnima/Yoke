@@ -207,7 +207,7 @@ namespace Yoke.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload([FromServices]IHostingEnvironment env, ProductList pl)
+        public ActionResult Upload([FromServices]IHostingEnvironment env, ProductList pl,Prouduct p)
         {
             var fileName = Path.Combine("upload", DateTime.Now.ToString("MMddHHmmss") + ".jpg");
             using (var stream = new FileStream(Path.Combine(env.WebRootPath, fileName), FileMode.CreateNew))
