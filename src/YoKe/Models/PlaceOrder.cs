@@ -15,6 +15,7 @@ namespace YoKe.Models
         public string Brand { get; set; }
         public string Producer { get; set; }
         public string TheProductName { get; set; }
+        public string BigImg { get; set; }
         public double? Price { get; set; }
         public string Address { get; set; }
         public int? Quantity { get; set; }

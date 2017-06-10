@@ -30,6 +30,8 @@ namespace YoKe.Models
         public double? Price { get; set; }
         public string img { get; set; }
         public IFormFile PImg { get; set; }
+        public IFormFile OImg { get; set; }
+
     }
     public class PlacceOrderList
     {
@@ -39,6 +41,8 @@ namespace YoKe.Models
         public string Remarks { get; set; }
         public double? Price { get; set; }
         public int? theCustomer { get; set; }
+        public string img { get; set; }
+        
     }
 
     public class CartItem

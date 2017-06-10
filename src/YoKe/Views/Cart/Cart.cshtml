@@ -538,7 +538,7 @@
                             <h1 class="titleh1" style="font-weight: bold;text-align: left;color: orangered;"><span class="badge" style="color: blanchedalmond;background-color: red;">!</span>&nbsp;安全提示:</h1>
                             <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
                         </div>
-                        <form asp-controller="Cart" asp-action="UploadPlaceOrder" class="form-horizontal" role="form" method="post"   style="margin: 20px 0;">
+                        <form asp-controller="Cart" asp-action="UploadPlaceOrder" class="form-horizontal" enctype="multipart/form-data" role="form" method="post"   style="margin: 20px 0;">
                             <!--图片上传-->
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -546,7 +546,7 @@
                                         <div id="localImag" class="col-md-3 col-md-offset-10 col-sm-3 col-sm-offset-9">
                                             <img id="preview" src="~/images/fushi.jpg" width="150" height="180" style="display: block; width: 150px; height: 180px;">
                                             <div style="background-image: url(img/2016-11-29_180117.png);width:150px;height: 40px;">
-                                                <input type="file" name="photoimg" id="photoimg" style="width:150px; height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
+                                                <input type="file" asp-for="OImg" @*name="photoimg" id="photoimg"*@ style="width:150px; height: 40px;" accept="image/jpeg ,image/png,image/bmp,image/jpg" onchange="javascript:setImagePreview();">
                                             </div>
                                         </div>
                                     </div>
@@ -560,7 +560,7 @@
                                     <div class="form-group">
                                         <label asp-for="po.Brand" class="col-sm-5 col-md-5 control-label">品牌：</label>
                                         <div class="col-sm-6 col-md-6">
-                                            <input asp-for="po.Brand" type="text" class="form-control" @*name="key1" id="key1"*@ placeholder="品牌">
+                                            <input asp-for="po.Brand" type="text" class="form-control" enctype="multipart/form-data" @*name="key1" id="key1"*@ placeholder="品牌">
                                         </div>
                                     </div>
                                 </div>
@@ -831,7 +831,7 @@
                                     </div>
                                     <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
                                         <div class="col-md-2 col-sm-2  textbold margintop20">
-                                            <img src="~/images/fushi.jpg" width="100px">
+                                            <img src="~/@pp.BigImg" width="100px">
                                         </div>
                                         <div class="col-md-2 col-sm-2 textcenter margintop20">@pp.Feature</div>
                                         <div class="col-md-1 col-sm-1 textcenter margintop20">999</div>
@@ -850,13 +850,13 @@
                                 {
                                     <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
                                         <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
-                                        <div class="col-md-4 col-sm-4  ">用户ID：@po.TheCustomer</div>
+                                        <div class="col-md-4 col-sm-4  ">用户ID：@po.ObjId</div>
                                         <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>用户ID：@po.TheCustomer</div>
                                         <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                     </div>
                                     <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
                                         <div class="col-md-2 col-sm-2  textbold margintop20">
-                                            <img src="~/images/fushi.jpg" width="100px">
+                                            <img src="~/@po.BigImg" width="100px">
                                         </div>
                                         <div class="col-md-2 col-sm-2 textcenter margintop20">@po.Remarks</div>
                                         <div class="col-md-1 col-sm-1 textcenter margintop20">泰国</div>
