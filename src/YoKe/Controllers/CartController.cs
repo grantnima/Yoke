@@ -7,6 +7,7 @@ using YoKe.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Yoke.Controllers
 {
@@ -19,6 +20,7 @@ namespace Yoke.Controllers
         }
         //
         // GET: /Cart/
+        [Authorize]
         public ActionResult Index()
         {
             ProductList pro = new ProductList();
@@ -29,7 +31,7 @@ namespace Yoke.Controllers
             foreach (var p in POrders)
             {
                 PlaceOrder po = new PlaceOrder();
-                po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price, TheProductName = p.TheProductName, TheCustomer = theCustomerId, Remarks = p.Remarks };
+                po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price, TheProductName = p.TheProductName, TheCustomer = theCustomerId, Remarks = p.Remarks,BigImg = p.BigImg };
                 pro.POrders.Add(po);
             }
             //我的发布--商品
@@ -38,7 +40,7 @@ namespace Yoke.Controllers
             foreach (var pp in PProducts)
             {
                 Product product = new Product();
-                product = new Product { ProductName = pp.ProductName, Feature = pp.Feature, Price = pp.Price, TheCustomer = theCustomerId };
+                product = new Product { ProductName = pp.ProductName, Feature = pp.Feature, Price = pp.Price, TheCustomer = theCustomerId,BigImg = pp.BigImg };
                 pro.PProducts.Add(product);
             }
             //List<Orders> or = db.Orders.Select<Orders, >;
@@ -214,11 +216,6 @@ namespace Yoke.Controllers
             {
                 pl.PImg.CopyTo(stream);
             }
-
-
-
-
-
             Product c = db.Product.Add(new Product()).Entity;
             c.ProductName = p.ProductName;
             c.Feature = p.Feature;
@@ -231,8 +228,13 @@ namespace Yoke.Controllers
             return Index();
         }
         [HttpPost]
-        public ActionResult UploadPlaceOrder(PlaceOrder po)
-        {          
+        public ActionResult UploadPlaceOrder([FromServices]IHostingEnvironment env, PlaceOrder po,ProductList pl)
+        {
+            var fileName = Path.Combine("upload", DateTime.Now.ToString("MMddHHmmss") + ".jpg");
+            using (var stream = new FileStream(Path.Combine(env.WebRootPath, fileName), FileMode.CreateNew))
+            {
+                pl.OImg.CopyTo(stream);
+            }
             PlaceOrder c = db.PlaceOrder.Add(new PlaceOrder()).Entity;
             c.TheCustomer = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
             c.Address = po.Address;
@@ -242,7 +244,7 @@ namespace Yoke.Controllers
             c.Quantity = po.Quantity;
             c.Remarks = po.Remarks;
             c.TheProductName = po.TheProductName;
-            
+            c.BigImg = fileName;
             db.SaveChanges();
             return Index();
         }
