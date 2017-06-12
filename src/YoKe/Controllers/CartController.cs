@@ -47,10 +47,30 @@ namespace Yoke.Controllers
 
             //List<Orders> or = db.Orders.Select<Orders, >;
             //var or =  from m in db.Orders select m;
-          
-            
-            
-            var order_show = (from p in db.Orders
+
+            //销售订单显示
+            var porder_show = (from p in db.PlaceOrder where p.TheCustomer == theCustomerId && p.PalceOrderState == 1
+                               select new PlaceOrder
+                               {
+                                   TheProductName = p.TheProductName,
+                                   BigImg = p.BigImg,
+                                   ObjId = p.ObjId,
+                                   Price = p.Price
+                               }
+                               );
+            var porder_show2 = (from p in db.PlaceOrder
+                               where p.TheCustomer == theCustomerId && p.PalceOrderState == 2
+                               select new PlaceOrder
+                               {
+                                   TheProductName = p.TheProductName,
+                                   BigImg = p.BigImg,
+                                   ObjId = p.ObjId,
+                                   Price = p.Price
+                               }
+                               );
+
+
+            var order_show = (from p in db.Orders where p.TheCustomer == theCustomerId
                             join w in db.Product on p.TheProduct equals w.ObjId
                             select new SOrder
                             {
@@ -135,12 +155,14 @@ namespace Yoke.Controllers
 
                                          }).FirstOrDefault<CartItem>();
                 order.Add(cartItem);
-                InsertOrder(cartItem);
+                //InsertOrder(cartItem);
             }
             ViewBag.cart = cart;
             ViewBag.favi = favi;
             ViewBag.order = order;
             ViewBag.or = order_show;
+            ViewBag.po = porder_show;
+            ViewBag.po2 = porder_show2;
 
             return View("Cart",pro);
         }
@@ -265,6 +287,7 @@ namespace Yoke.Controllers
             c.Remarks = po.Remarks;
             c.TheProductName = po.TheProductName;
             c.BigImg = fileName;
+            c.PalceOrderState = 0;
             db.SaveChanges();
             return Index();
         }
@@ -291,16 +314,25 @@ namespace Yoke.Controllers
         //}
         public ActionResult TakeOrder(int id)
         {
+            db.PlaceOrder.SingleOrDefault(u => u.ObjId == id).PalceOrderState = 1;
+            
+            db.SaveChanges();
 
             return Index();
         }
-
-        public void InsertOrder(CartItem c)
+        public ActionResult UpdatePOrder(int id)
         {
-            Orders o = db.Orders.Add(new Orders()).Entity;
-            o.TheProduct = c.id;
-
+            db.PlaceOrder.SingleOrDefault(u => u.ObjId == id).PalceOrderState = 2;
+            db.SaveChanges();
+            return Index();
         }
+
+        //public void InsertOrder(CartItem c)
+        //{
+        //    Orders o = db.Orders.Add(new Orders()).Entity;
+        //    o.TheProduct = c.id;
+
+        //}
         public RedirectResult updateCartRow(int id)
         {
             int value = int.Parse(Request.Query["value"].ToString());

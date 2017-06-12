@@ -21,6 +21,8 @@ namespace YoKe.Models
         public int? Quantity { get; set; }
         public int? ThePaymentType { get; set; }
         public string Remarks { get; set; }
+        
+        public int? PalceOrderState { get; set; }
 
         public virtual ICollection<TakeOrder> TakeOrder { get; set; }
         public virtual Customer TheCustomerNavigation { get; set; }

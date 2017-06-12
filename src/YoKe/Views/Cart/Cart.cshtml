@@ -104,7 +104,7 @@
                 <hr>
                 <h1 class="titleh">我的订单</h1>
                 <h1 class="titleh1"><a role="tab" class="action" data-toggle="tab" href="#user-tab1">购物订单</a></h1>
-                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab2">销售订单</a></h1>
+                <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab2">任务订单</a></h1>
                 <hr>
                 <h1 class="titleh">个人发布</h1>
                 <h1 class="titleh1"><a role="tab" class="" data-toggle="tab" href="#user-tab3">发布任务</a></h1>
@@ -344,8 +344,8 @@
                             <h1 class="titleh1" style="color: orangered;font-weight: bold;line-height: 1em;">近期有不法分子伪造优客客服电话和银行电话以邀请注册，账号升级变更，订单异常等要求提供信息。请不要相信，谨防诈骗。</h1>
                         </div>
                         <ul class="nav mynav" id="nav-lab2">
-                            <li role="presentation" class="active"><a href="#user-tab2-tab1" aria-controls="home" role="tab" data-toggle="tab">全部订单</a></li>
-                            <li role="presentation"><a href="#user-tab2-tab2" aria-controls="home" role="tab" data-toggle="tab">待付款</a></li>
+                            <li role="presentation" class="active"><a href="#user-tab2-tab1" aria-controls="home" role="tab" data-toggle="tab">已完成</a></li>
+                            <li role="presentation"><a href="#user-tab2-tab2" aria-controls="home" role="tab" data-toggle="tab">待完成</a></li>
                             <li role="presentation"><a href="#user-tab2-tab3" aria-controls="home" role="tab" data-toggle="tab">待发货</a></li>
                             <li role="presentation"><a href="#user-tab2-tab4" aria-controls="home" role="tab" data-toggle="tab">待收货</a></li>
                             <li role="presentation"><a href="#user-tab2-tab5" aria-controls="home" role="tab" data-toggle="tab">待评价</a></li>
@@ -369,18 +369,20 @@
                         <div class="tab-content">
                             <!--user-tab2-1-->
                             <div role="tabpanel" class="tab-pane fade in active" id="user-tab2-tab1">
+                                @foreach (var po in ViewBag.po2 )
+                                {
                                 <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
                                     <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
-                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：@po.ObjId </div>
                                     <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
                                     <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                 </div>
                                 <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
                                     <div class="col-md-2 col-sm-2  textbold margintop20">
-                                        <img src="~/images/fushi.jpg" width="100px">
+                                        <img src="~/@po.BigImg" width="100px">
                                     </div>
-                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
-                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">@po.TheProductName</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥@po.Price</div>
                                     <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
                                     <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
                                     <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
@@ -389,30 +391,34 @@
                                         <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
                                     </div>
                                 </div>
+                                }
                             </div>
                             <!--user-tab2-1--end-->
                             <!--user-tab2-2-->
                             <div role="tabpanel" class="tab-pane fade " id="user-tab2-tab2">
-                                <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
-                                    <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
-                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
-                                    <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
-                                    <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
-                                </div>
-                                <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
-                                    <div class="col-md-2 col-sm-2  textbold margintop20">
-                                        <img src="~/images/fushi.jpg" width="100px">
+                                @foreach (var po in ViewBag.po )
+                                {
+                                    <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
+                                        <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
+                                        <div class="col-md-4 col-sm-4  ">订单号：@po.ObjId </div>
+                                        <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
+                                        <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                     </div>
-                                    <div class="col-md-2 col-sm-2 textcenter margintop20">慕小爱绿色新鲜水果黄瓜农家自种</div>
-                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
-                                    <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
-                                    <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
-                                    <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">代付款<br>订单详情<br></div>
-                                    <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
-                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">修改价格</button>
-                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">备注</button>
+                                    <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
+                                        <div class="col-md-2 col-sm-2  textbold margintop20">
+                                            <img src="~/@po.BigImg" width="100px">
+                                        </div>
+                                        <div class="col-md-2 col-sm-2 textcenter margintop20">@po.TheProductName</div>
+                                        <div class="col-md-1 col-sm-1 textcenter margintop20">￥@po.Price</div>
+                                        <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
+                                        <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
+                                        <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
+                                        <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
+                                            <a asp-action="UpdatePOrder/@po.ObjId"><button href="#" class="btn button-glow button-border button-rounded button-primary" style="">确认收货</button></a>
+                                            <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                             <!--user-tab2-2--end-->
                             <!--user-tab2-3-->
