@@ -43,7 +43,7 @@ namespace Yoke.Controllers
                 product = new Product { ProductName = pp.ProductName, Feature = pp.Feature, Price = pp.Price, TheCustomer = theCustomerId,BigImg = pp.BigImg };
                 pro.PProducts.Add(product);
             }
-
+            pro.PagingInfoPro = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = productslist.Count() };
 
             //List<Orders> or = db.Orders.Select<Orders, >;
             //var or =  from m in db.Orders select m;
