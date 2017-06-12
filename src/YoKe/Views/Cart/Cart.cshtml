@@ -13,7 +13,9 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="~/css/index.css" rel="stylesheet">
     <script type="text/javascript">
-			window.onload = function() {
+        window.onload = function () {
+            @*var imgway = @ViewBag.or.img ;
+            alert(imgway);*@
 	           $('.checkboxchange').change(function(){
 	           	document.getElementById("use-heart-all").checked=false;
 	           })
@@ -156,20 +158,22 @@
                         <!--user-tab1-tab-->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade in active" id="user-tab1-tab1">
+@foreach (var or in ViewBag.or)
+{
                                 <div class="row" style="background-color:whitesmoke ;margin-top: 30px;padding: 10px;margin-left: 10px;">
                                     <div class="col-md-2 col-sm-3  textbold">2017-04-15</div>
-                                    <div class="col-md-4 col-sm-4  ">订单号：5705663010619 </div>
+                                    <div class="col-md-4 col-sm-4  ">订单号：@or.o_no </div>
                                     <div class="col-md-3 col-sm-2 textcenter textbold"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="color: red;margin-right: 3px;"></span>慕小爱</div>
                                     <div class="col-md-3 col-sm-3  text-right textbold" style="color: cornflowerblue;"><span class="glyphicon glyphicon-comment" aria-hidden="true" style="color: cornflowerblue;margin-right: 3px;"></span>在线咨询</div>
                                 </div>
                                 <div class="row" style="margin-left: 10px;margin-top: 0px;border: 1px solid #E0E0E0;height: 150px;">
-@foreach (var or in ViewBag.or)
-{
+
+
                                     <div class="col-md-2 col-sm-2  textbold margintop20">
-                                        <img src="~/images/fushi.jpg" width="100px">
+                                        <img src="~/@or.img" width="100px">
                                     </div>
-                                    <div class="col-md-2 col-sm-2 textcenter margintop20">@or.ThePayment</div>
-                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥25.50</div>
+                                    <div class="col-md-2 col-sm-2 textcenter margintop20">@or.p_name</div>
+                                    <div class="col-md-1 col-sm-1 textcenter margintop20">￥@or.price</div>
                                     <div class="col-md-1 col-sm-1  text-center textbold margintop20">1</div>
                                     <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥15.50<br>包邮</div>
                                     <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已发货<br>订单详情<br><a href="#" style="color: orange;">查看物流</a></div>
@@ -177,8 +181,9 @@
                                         <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">确认收货</button>
                                         <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">退款/退货</button>
                                     </div>
-}
+
                                 </div>
+}
                             </div>
                             <!--user-tab1-tab1--end-->
                             <!--user-tab1-tab2---->
@@ -903,7 +908,7 @@
 {
                         <div class="row" style="margin-left: 10px;margin-top: 20px;border: 1px solid #E0E0E0;height: 150px;">
                             <div class="col-md-3 col-sm-3   margintop20">
-                                <input type="checkbox" value="option1" class="checkboxcart" name="use-cart"><img src="~/images/fushi.jpg" width="100px">
+                                <input type="checkbox" value="option1" class="checkboxcart" name="use-cart"><img src="~/@cartItem.img" width="100px">
                             </div>
                             <div class="col-md-2 col-sm-2  margintop20">@cartItem.productName</div>
                             <div class="col-md-2 col-sm-2   textbold margintop20">颜色: RB/9953/兰色<br>尺码: 42</div>
@@ -941,7 +946,7 @@
 @foreach (var cartItem in ViewBag.favi as List<CartItem>)
 {
                             <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                                <img src="~/images/fushi.jpg" class="imgstyle">
+                                <a href="Home/Detail/@cartItem.id"><img src="~/@cartItem.img" class="imgstyle"></a>
                                 <h5><input type="checkbox" name="use-heart" class="checkboxchange" value="option1">@cartItem.productName</h5>
                                 <h3>¥@cartItem.price</h3>
                             </div>

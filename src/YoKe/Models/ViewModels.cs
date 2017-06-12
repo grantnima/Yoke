@@ -31,6 +31,7 @@ namespace YoKe.Models
         public string img { get; set; }
         public IFormFile PImg { get; set; }
         public IFormFile OImg { get; set; }
+        public SOrder so { get; set; }
 
     }
     public class PlacceOrderList
@@ -51,6 +52,7 @@ namespace YoKe.Models
         public int id { get; set; }
         public double price { get; set; }
         public int qty { get; set; }
+        public string img { get; set; }
     }
 
     public class OrderInfo
@@ -88,4 +90,14 @@ namespace YoKe.Models
         public int CurrentPage { get; set; }
         public int TotalPages => (int)Math.Ceiling((decimal)TotalItems / ItemsPerPage);
     }
+
+    public class SOrder
+    {
+        public int o_no { get; set; }
+        public string p_name { get; set; }
+        public double price { get; set; }
+        public string img { get; set; }
+    }
+    
+
 }

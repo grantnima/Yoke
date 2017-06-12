@@ -43,8 +43,26 @@ namespace Yoke.Controllers
                 product = new Product { ProductName = pp.ProductName, Feature = pp.Feature, Price = pp.Price, TheCustomer = theCustomerId,BigImg = pp.BigImg };
                 pro.PProducts.Add(product);
             }
+
+
             //List<Orders> or = db.Orders.Select<Orders, >;
-            var or =  from m in db.Orders select m;
+            //var or =  from m in db.Orders select m;
+          
+            
+            
+            var order_show = (from p in db.Orders
+                            join w in db.Product on p.TheProduct equals w.ObjId
+                            select new SOrder
+                            {
+                                o_no = p.ObjId,
+                                p_name = w.ProductName,
+                                price = (double)w.Price,
+                                img = (string)w.BigImg
+                            });
+              
+           
+
+
 
             if (Request.Query["retUrl"].ToString() != "")
             {
@@ -78,6 +96,7 @@ namespace Yoke.Controllers
                                              id = p.ObjId,
                                              price = (double)p.Price,
                                              qty = curQty,
+                                             img = p.BigImg
                                              
                                          }).FirstOrDefault<CartItem>();
                 cart.Add(cartItem);
@@ -95,6 +114,7 @@ namespace Yoke.Controllers
                                              id = p.ObjId,
                                              price = (double)p.Price,
                                              qty = curQty,
+                                             img = p.BigImg
                                              
                                          }).FirstOrDefault<CartItem>();
                 favi.Add(cartItem);
@@ -120,7 +140,7 @@ namespace Yoke.Controllers
             ViewBag.cart = cart;
             ViewBag.favi = favi;
             ViewBag.order = order;
-            ViewBag.or = or;
+            ViewBag.or = order_show;
 
             return View("Cart",pro);
         }
