@@ -103,7 +103,21 @@
                 <h3>¥@po.Price</h3>
             </div>
         }
-        
+        @*<nav aria-label="Page navigation " style="width: 320px;margin: 0 auto;">
+            <ul class="pagination pagination-lg">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li page-model="@Model.PagingIndex" page-action="Index"></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>*@
     </div>
     <!--标签结束-->
     <!--热销推荐开始-->
@@ -117,6 +131,7 @@
             <h3>@pl.ProductName</h3>
             <h3>¥@pl.Price</h3>
         </div>
+
 }
     </div>
     <nav aria-label="Page navigation " style="width: 320px;margin: 0 auto;">

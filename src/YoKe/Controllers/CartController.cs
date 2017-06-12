@@ -21,12 +21,13 @@ namespace Yoke.Controllers
         //
         // GET: /Cart/
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1,int pageSize = 4)
         {
             ProductList pro = new ProductList();
             pro.POrders = new List<PlaceOrder>();
-            var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.TheCustomer == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
+            var porderslist = db.PlaceOrder.Where<PlaceOrder>(m => m.TheCustomer == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
             //var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
+            var POrders = porderslist.Skip((page - 1) * pageSize).Take(pageSize);
             var theCustomerId = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
             foreach (var p in POrders)
             {
@@ -34,15 +35,20 @@ namespace Yoke.Controllers
                 po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price, TheProductName = p.TheProductName, TheCustomer = theCustomerId, Remarks = p.Remarks,BigImg = p.BigImg };
                 pro.POrders.Add(po);
             }
+            pro.PagingInfoOrd = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = porderslist.Count() };
             //我的发布--商品
             pro.PProducts = new List<Product>();
-            var PProducts = db.Product.Where<Product>(m => m.TheCustomer == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
+            var productslist = db.Product.Where<Product>(m => m.TheCustomer == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
+            var PProducts = productslist.Skip((page - 1) * pageSize).Take(pageSize);
             foreach (var pp in PProducts)
             {
                 Product product = new Product();
                 product = new Product { ProductName = pp.ProductName, Feature = pp.Feature, Price = pp.Price, TheCustomer = theCustomerId,BigImg = pp.BigImg };
                 pro.PProducts.Add(product);
             }
+            pro.PagingInfoPro = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = productslist.Count() };
+            //var a = db.Product.Where<Product>(m => m.ProductType == "%手机");
+            //pro.PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = productlist.Count() };
             //List<Orders> or = db.Orders.Select<Orders, >;
             var or =  from m in db.Orders select m;
 

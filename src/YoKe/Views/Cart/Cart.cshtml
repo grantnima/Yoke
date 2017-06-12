@@ -843,8 +843,24 @@
                                             <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">下架商品</button>
                                         </div>
                                     </div>
-                                }                            
-                            </div>                        
+                                }   
+                                <nav aria-label="Page navigation " style="width: 320px;margin: 0 auto;">
+                                    <ul class="pagination pagination-lg">
+                                        <li>
+                                            <a href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li page-model="@Model.PagingInfoPro" page-action="Index"></li>
+                                        <li>
+                                            <a href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>                         
+                            </div>
+                                                   
                                 <div role="tabpanel" class="tab-pane fade " id="user-tab5-tab2">
                                 @foreach (var po in Model.POrders)
                                 {
@@ -869,8 +885,23 @@
                                         </div>
                                     </div>
                                 }
+                                    <nav aria-label="Page navigation " style="width: 320px;margin: 0 auto;">
+                                        <ul class="pagination pagination-lg">
+                                            <li>
+                                                <a href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            <li page-model="@Model.PagingInfoOrd" page-action="Index"></li>
+                                            <li>
+                                                <a href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
-                            
+                           
                                            
                         </div>
                     </div>

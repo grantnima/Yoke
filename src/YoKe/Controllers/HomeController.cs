@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,7 +27,9 @@ namespace YoKe.Controllers
             //ProductList pp = new ProductList();
             //pp.p = new Product();
             //var Products = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price).Take<Product>(12);
-            var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
+            //var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
+            var porderslist = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0);
+            var POrders = porderslist.Skip((page - 1) * pageSize).Take(pageSize);
             var productlist = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price);
             var Products = productlist.Skip((page - 1) * pageSize).Take(pageSize);
             foreach (var o in Products)
@@ -51,6 +53,7 @@ namespace YoKe.Controllers
                 ivm.POrders.Add(po);
             }
             ivm.PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = productlist.Count() };
+            //ivm.PagingIndex = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = porderslist.Count() };
             return View(ivm);
         }
 

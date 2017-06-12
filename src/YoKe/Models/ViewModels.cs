@@ -14,6 +14,7 @@ namespace YoKe.Models
         public List<ProductList> Products { get; set; }
         public List<PlaceOrder> POrders { get; set; }
         public PagingInfo PagingInfo { get; set; }
+        //public PagingInfo PagingIndex { get; set; }
     }
 
     public class ProductList
@@ -31,6 +32,8 @@ namespace YoKe.Models
         public string img { get; set; }
         public IFormFile PImg { get; set; }
         public IFormFile OImg { get; set; }
+        public PagingInfo PagingInfoOrd { get; set; }
+        public PagingInfo PagingInfoPro { get; set; }
 
     }
     public class PlacceOrderList

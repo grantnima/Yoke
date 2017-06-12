@@ -20,6 +20,7 @@ namespace YoKe.Infrastructure
         [HtmlAttributeNotBound]
         public ViewContext ViewContext { get; set; }
         public PagingInfo PageModel { get; set; }
+        //public PagingInfo PageIndex { get; set; }
         public string PageAction { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
