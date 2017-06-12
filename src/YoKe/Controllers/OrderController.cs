@@ -79,6 +79,7 @@ namespace YoKe.Controllers
                     o.Entity.TheProduct = int.Parse(Request.Form["productId_" + i].ToString().Trim());
                     o.Entity.OrderState = 0;
                     o.Entity.OrderTime = DateTime.Now;
+                    o.Entity.PaymentObjId = p.Entity.ObjId;
 
                     //Orders o = db.Orders.Add(new Orders()).Entity;
                     //o.ThePayment = p.Entity.ObjId;

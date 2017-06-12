@@ -53,7 +53,60 @@
 			    document.getElementById('qtyDsp_' + row).style.display = 'block';
 			    document.getElementById('qtyIn_' + row).style.display = 'none';
 			}
-			
+			function modiInfo() {
+			    var val = document.getElementById("btnModiInfo").value;
+			    if (val == "修改信息") {
+			        setEditable();
+			    }
+			    else {
+			        //1。测试用户名是否唯一。如果不唯一则提示并中断提交
+			        //var newName = document.getElementById("memberName").value;
+			        //if (newName.trim().length == 0)
+			        //    alert("用户名不能为空！");
+			        //else {
+			        var xmlhttp = new XMLHttpRequest();
+			        //var curUserId = document.getElementById("userId").value;
+			        //xmlhttp.open("get", "/Account/testMemberName?newName=" + newName + "&curUserId=" + curUserId, false);
+			        //xmlhttp.send(); //这里用同步方式发送了XMLHttpRequest调用
+			        //if (xmlhttp.responseText.trim() == "0") {
+			        //2。提交有效信息，更新成功
+			        xmlhttp.onreadystatechange = function () {
+			            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+			                if (xmlhttp.responseText.trim() == "1" || xmlhttp.responseText.trim() == "0")
+			                    setReadonly();//3。恢复到只读状态
+			                else
+			                    alert("信息提交不成功，请重新尝试！");
+			        }
+			        xmlhttp.open("post", "/Account/updateMemberInfo", true);
+			        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			        xmlhttp.send(
+                        "memberMobile=" + document.getElementById("memberMobile").value
+                    )
+			    }
+			}
+			function setEditable() {
+			    //document.getElementById("memberName").style.border = "solid";
+			    //document.getElementById("memberName").readOnly = false;
+			    document.getElementById("memberMobile").style.border = "solid";
+			    document.getElementById("memberMobile").readOnly = false;
+			    //document.getElementById("memberEmail").style.border = "solid";
+			    //document.getElementById("memberEmail").readOnly = false;
+			    document.getElementById("btnModiInfo").value = "提交信息";
+			}
+			function modiPWD() {
+			    document.getElementById("pwdBlk").style.display = "block";
+			}
+			function setReadonly() {
+			    //document.getElementById("memberName").style.border = "none";
+			    //$("#memberName").css("border", "none");//JQuery写法，与上一行等价
+			    //document.getElementById("memberName").readOnly = true;
+			    //$("#memberName").readOnly = true;
+			    document.getElementById("memberMobile").style.border = "none";
+			    document.getElementById("memberMobile").readOnly = true;
+			    //document.getElementById("memberEmail").style.border = "none";
+			    //document.getElementById("memberEmail").readOnly = true;
+			    document.getElementById("btnModiInfo").value = "修改信息";
+			}
     </script>
 </head>
 <body>
@@ -1040,21 +1093,54 @@
                         </div>
                         <div class="row" style="margin: 50px 0;font-size: 20px;line-height: 3em;font-family: '楷体';">
                             <div class="col-md-12 col-sm-12 text-center textbold">
-                                昵称：那天๓淘宝科技
+                                昵称:@ViewBag.name
                             </div>
-                            <div class="col-md-12 col-sm-12 text-center textbold">
+                            @*<div class="col-md-12 col-sm-12 text-center textbold">
                                 性别：<input type="radio" name="radio" value="1" style="margin-left:30px;" checked>男
                                 <input type="radio" name="radio" value="2" style="margin-left:30px;">女
-                            </div>
+                            </div>*@
                             <div class="col-md-12 col-sm-12 text-center textbold">
-                                手机号：15992680980
+                                手机号：
+                                <input type="text" id="memberMobile" name="memberMobile" readOnly="true" style="Width:156px;border:none;" value="@ViewBag.mobilephone" />
                             </div>
 
                             <div class="col-md-12 col-sm-12 text-center textbold">
-                                <button href="#" class="button button-glow button-border button-rounded button-primary" style="">保存</button>
+                                <button href="#" class="button button-glow button-border button-rounded button-primary" id="btnModiInfo" value="修改信息" onclick="javascript: modiInfo();"></button>
+                                <button href="#" class="button button-glow button-border button-rounded button-primary" id="btnModiPWD" value="修改密码" onclick="javascript: modiPWD();"></button>
                             </div>
                         </div>
                     </div>
+                    <form id="baseInfo" class="col-md-12" asp-controller="Account" asp-action="MemberHome" method="post">
+                        <div id="pwdBlk" style="display:none">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group" style="font:100">
+                                <label asp-for="MemberHome.OldPassword" class="col-md-5 control-label text-right"></label>
+                                <div class="col-md-7 text-left">
+                                    <input asp-for="MemberHome.OldPassword" class="form-control" />
+                                    <span asp-validation-for="MemberHome.OldPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MemberHome.NewPassword" class="col-md-5 control-label text-right"></label>
+                                <div class="col-md-7 text-left">
+                                    <input asp-for="MemberHome.NewPassword" class="form-control" />
+                                    <span asp-validation-for="MemberHome.NewPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MemberHome.ConfirmPassword" class="col-md-5 control-label text-right"></label>
+                                <div class="col-md-7 text-left">
+                                    <input asp-for="MemberHome.ConfirmPassword" class="form-control" />
+                                    <span asp-validation-for="MemberHome.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <button type="submit" class="btn btn-default">提交新密码</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <!--基本资料标签结束-->
                     <!--收货地址标签开始-->
                     <div class="tab-pane fade " id="user-tab11">

@@ -11,6 +11,7 @@ namespace YoKe.Models
         public int? ThePayment { get; set; }
         public int? OrderState { get; set; }
         public DateTime? OrderTime { get; set; }
+        public int? PaymentObjId { get; set; }
 
         public virtual Customer TheCustomerNavigation { get; set; }
         public virtual PaymentType ThePaymentNavigation { get; set; }

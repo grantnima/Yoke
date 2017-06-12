@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 using YoKe.Models;
 using YoKe.Models.AccountViewModels;
 using YoKe.Services;
-
+using Microsoft.AspNetCore.Http;
 
 namespace YoKe.Controllers
 {
@@ -255,6 +255,40 @@ namespace YoKe.Controllers
             }
             var result = await _userManager.ConfirmEmailAsync(user, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+        [HttpPost]
+        public async Task<ActionResult> MemberHome(ProductList mhm, int page = 1, int pageSize = 3)
+        {
+            string curUser = User.Identity.Name;
+            var c = await _userManager.FindByNameAsync(curUser);
+            Customer cust = db.Customer.Single(m => m.UserName == curUser);
+            int custId = ViewBag.uid = cust.ObjId;
+            ViewBag.pwdDisp = "block";
+            IdentityResult r = await _userManager.ChangePasswordAsync(c, mhm.MemberHome.OldPassword, mhm.MemberHome.NewPassword);
+            if (r.Succeeded)
+            {
+                ViewBag.pwdDisp = "none";
+            }
+            else
+            {
+                await Response.WriteAsync("<script>alert('密码更新失败！');</script>");
+            }
+            return View("~/Views/Cart/Cart.cshtml",mhm);
+        }
+        public async void updateMemberInfo(string memberMobile)
+        {
+            //var user = await _userManager.FindByIdAsync(memberId);
+            Customer c = db.Customer.Single(m => m.ObjId == db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId);
+            //c.UserName = memberName;
+            //c.Email = memberEmail;
+            c.MobilePhone = memberMobile;
+            int result = db.SaveChanges();
+            //user.UserName = memberName;
+            //user.Email = memberEmail;
+            //var identityResult = await _userManager.UpdateAsync(user);
+            //int result = identityResult.Succeeded ? 1 : 0;
+            Response.ContentType = "text/plain";
+            await Response.WriteAsync(result.ToString());
         }
 
         //

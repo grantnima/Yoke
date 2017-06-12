@@ -29,6 +29,8 @@ namespace Yoke.Controllers
             //var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
             var POrders = porderslist.Skip((page - 1) * pageSize).Take(pageSize);
             var theCustomerId = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).ObjId;
+            ViewBag.name = User.Identity.Name;
+            ViewBag.mobilephone = db.Customer.SingleOrDefault(u => u.Email == User.Identity.Name).MobilePhone;
             foreach (var p in POrders)
             {
                 PlaceOrder po = new PlaceOrder();
