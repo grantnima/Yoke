@@ -47,7 +47,7 @@ namespace YoKe.Controllers
             foreach (var p in POrders)
             {
                 PlaceOrder po = new PlaceOrder();
-                po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price,TheProductName = p.TheProductName };
+                po = new PlaceOrder { ObjId = p.ObjId, Address = p.Address, Brand = p.Brand, Price = p.Price,TheProductName = p.TheProductName,BigImg = p.BigImg };
                 ivm.POrders.Add(po);
             }
             ivm.PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = productlist.Count() };

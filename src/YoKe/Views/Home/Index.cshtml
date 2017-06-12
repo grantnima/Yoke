@@ -98,7 +98,7 @@
         @foreach (PlaceOrder po in Model.POrders)
         {
             <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <a href='/Home/PDetail/@po.ObjId'><img src="~/images/goods.jpg" class="imgstyle"></a>
+                <a href='/Home/PDetail/@po.ObjId'><img src="~/@po.BigImg" class="imgstyle"></a>
                 <h3>@po.TheProductName</h3>
                 <h3>¥@po.Price</h3>
             </div>
