@@ -13,7 +13,7 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="~/css/index.css" rel="stylesheet">
     <script type="text/javascript">
-			window.onload = function() {
+        window.onload = function () {
 	           $('.checkboxchange').change(function(){
 	           	document.getElementById("use-heart-all").checked=false;
 	           })
@@ -92,6 +92,7 @@
 			    //document.getElementById("memberEmail").style.border = "solid";
 			    //document.getElementById("memberEmail").readOnly = false;
 			    document.getElementById("btnModiInfo").value = "提交信息";
+			    document.getElementById("btnModiInfo").innerHTML = "提交信息";
 			}
 			function modiPWD() {
 			    document.getElementById("pwdBlk").style.display = "block";
@@ -1105,8 +1106,8 @@
                             </div>
 
                             <div class="col-md-12 col-sm-12 text-center textbold">
-                                <button href="#" class="button button-glow button-border button-rounded button-primary" id="btnModiInfo" value="修改信息" onclick="javascript: modiInfo();"></button>
-                                <button href="#" class="button button-glow button-border button-rounded button-primary" id="btnModiPWD" value="修改密码" onclick="javascript: modiPWD();"></button>
+                                <button href="#" class="button button-glow button-border button-rounded button-primary" id="btnModiInfo" value="修改信息" onclick="javascript: modiInfo();">修改信息</button>
+                                <button href="#" class="button button-glow button-border button-rounded button-primary" id="btnModiPWD" value="修改密码" onclick="javascript: modiPWD();">修改密码</button>
                             </div>
                         </div>
                     </div>

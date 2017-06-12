@@ -19,7 +19,7 @@ namespace YoKe.Controllers
         {
             db = yokedb;
         }
-        public IActionResult Index(int page = 1,int pageSize = 4)
+        public IActionResult Index(int page = 1,int pageSize = 8)
         {
             HomeIndexViewModel ivm = new HomeIndexViewModel();
             ivm.Products = new List<ProductList>();

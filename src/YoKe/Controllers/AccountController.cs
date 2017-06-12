@@ -273,7 +273,8 @@ namespace YoKe.Controllers
             {
                 await Response.WriteAsync("<script>alert('密码更新失败！');</script>");
             }
-            return View("~/Views/Cart/Cart.cshtml",mhm);
+            //return View("~/Views/Cart/Cart.cshtml");
+            return RedirectToAction("Index", "Cart");
         }
         public async void updateMemberInfo(string memberMobile)
         {
