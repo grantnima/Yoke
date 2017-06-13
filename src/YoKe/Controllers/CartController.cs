@@ -46,7 +46,7 @@ namespace Yoke.Controllers
             foreach (var pp in PProducts)
             {
                 Product product = new Product();
-                product = new Product { ProductName = pp.ProductName, Feature = pp.Feature, Price = pp.Price, TheCustomer = theCustomerId,BigImg = pp.BigImg };
+                product = new Product { ObjId=pp.ObjId, ProductName = pp.ProductName, Feature = pp.Feature, Price = pp.Price, TheCustomer = theCustomerId,BigImg = pp.BigImg };
                 pro.PProducts.Add(product);
             }
             pro.PagingInfoPro = new PagingInfo { CurrentPage = page, ItemsPerPage = pageSize, TotalItems = productslist.Count() };
@@ -334,6 +334,22 @@ namespace Yoke.Controllers
             return Index();
         }
 
+        public ActionResult DelProduct(int id)
+        {
+            Product p = new Product() { ObjId = id };
+            db.Product.Attach(p);
+            db.Product.Remove(p);
+            db.SaveChanges();
+            return Index();
+        }
+        public ActionResult DelPOrder(int id)
+        {
+            PlaceOrder p = new PlaceOrder() { ObjId = id };
+            db.PlaceOrder.Attach(p);
+            db.PlaceOrder.Remove(p);
+            db.SaveChanges();
+            return Index();
+        }
         //public void InsertOrder(CartItem c)
         //{
         //    Orders o = db.Orders.Add(new Orders()).Entity;
@@ -353,6 +369,13 @@ namespace Yoke.Controllers
             List<int[]> curCart = HttpContext.Session.GetJson<List<int[]>>("Cart");
             curCart.RemoveAt(id);
             HttpContext.Session.SetJson("Cart", curCart);
+            return Redirect("/Cart?retUrl=" + Request.Query["retUrl"].ToString());
+        }
+        public RedirectResult deleOrderRow(int id)
+        {
+            List<int[]> curOrder = HttpContext.Session.GetJson<List<int[]>>("Order");
+            curOrder.RemoveAt(id);
+            HttpContext.Session.SetJson("Order", curOrder);
             return Redirect("/Cart?retUrl=" + Request.Query["retUrl"].ToString());
         }
         public RedirectResult storeCartRow(int id)

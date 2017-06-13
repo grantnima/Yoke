@@ -29,6 +29,9 @@
 			function _doDelete(row, retUrl) {
 			    window.location.assign("/Cart/deleCartRow/" + row + "?retUrl=" + retUrl);
 			}
+			function _doDeleteOrder(row, retUrl) {
+			    window.location.assign("/Cart/deleOrderRow/" + row + "?retUrl=" + retUrl);
+			}
 			function _doFaviDelete(row, retUrl) {
 			    window.location.assign("/Cart/deleFaviRow/" + row + "?retUrl=" + retUrl);
 			}
@@ -261,7 +264,7 @@
                                     <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">待付款<br>订单详情</div>
                                     <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
                                         <a asp-controller="Order" asp-action="Index"><button href="/Order" class="btn button-glow button-border button-rounded button-primary" style="">付款</button></a>
-                                        <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">取消订单</button>
+                                        <a href="javascript:_doDeleteOrder(@cartRow,'@ViewBag.continueBuy')">删除</a><button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">取消订单</button>
                                     </div>
                                 </div>
 }
@@ -905,7 +908,7 @@
                                         <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;"><a href="#" style="color: orange;">98%</a></div>
                                         <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
                                             <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">查看详情</button>
-                                            <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">下架商品</button>
+                                            <a asp-action="DelProduct/@pp.ObjId"><button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">下架商品</button></a>
                                         </div>
                                     </div>
                                 }  
@@ -944,7 +947,7 @@
                                         <div class="col-md-2 col-sm-2  text-center textbold " style="border: 1px solid #E0E0E0;height: 100%;padding-top:20px;line-height: 2em;border-top:none;border-bottom:none">￥@po.Price<br>包邮</div>
                                         <div class="col-md-2 col-sm-2  text-center " style="height: 100%;padding-top:20px;line-height: 2em;">已接受<br>广东珠海<br><a href="#" style="color: orange;">查看物流</a></div>
                                         <div class="col-md-2 col-sm-2  " style="border: 1px solid #E0E0E0;height: 100%;border-right:none;padding-top:20px;border-top:none;border-bottom:none">
-                                            <button href="#" class="btn button-glow button-border button-rounded button-primary" style="">删除请求</button>
+                                            <a asp-action="DelPOrder/@po.ObjId"><button href="#" class="btn button-glow button-border button-rounded button-primary" style="">删除请求</button></a>
                                             <button href="#" class="btn button-glow button-border button-rounded button-primary" style="margin-top: 20px;">确认完成</button>
                                         </div>
                                     </div>
