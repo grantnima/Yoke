@@ -158,6 +158,7 @@ namespace Yoke.Controllers
                                              id = p.ObjId,
                                              price = (double)p.Price,
                                              qty = curQty,
+                                             img = p.BigImg
 
                                          }).FirstOrDefault<CartItem>();
                 order.Add(cartItem);
