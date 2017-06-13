@@ -19,7 +19,7 @@ namespace YoKe.Controllers
         {
             db = yokedb;
         }
-        public IActionResult Index(int page = 1,int pageSize = 4)
+        public IActionResult Index(int page = 1,int pageSize = 8)
         {
             HomeIndexViewModel ivm = new HomeIndexViewModel();
             ivm.Products = new List<ProductList>();
@@ -27,7 +27,9 @@ namespace YoKe.Controllers
             //ProductList pp = new ProductList();
             //pp.p = new Product();
             //var Products = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price).Take<Product>(12);
-            var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
+            //var POrders = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0).Take<PlaceOrder>(12);
+            var porderslist = db.PlaceOrder.Where<PlaceOrder>(m => m.ObjId > 0);
+            var POrders = porderslist.Skip((page - 1) * pageSize).Take(pageSize);
             var productlist = db.Product.Where<Product>(m => m.ObjId > 0).OrderBy<Product, float>(m => (float)m.Price);
             var Products = productlist.Skip((page - 1) * pageSize).Take(pageSize);
             foreach (var o in Products)
