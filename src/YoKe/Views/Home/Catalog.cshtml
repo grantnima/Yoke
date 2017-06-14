@@ -16,13 +16,19 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="~/images/background.jpg" alt="..." height="400px" ;>
+            <img class="img-responsive" src="~/images/2.png" alt="..." ;>
             <div class="carousel-caption">
                 ...
             </div>
         </div>
         <div class="item">
-            <img src="~/images/goods.jpg" alt="...">
+            <img class="img-responsive" src="~/images/1.png" alt="...">
+            <div class="carousel-caption">
+                ...
+            </div>
+        </div>
+        <div class="item">
+            <img class="img-responsive" src="~/images/3.png" alt="...">
             <div class="carousel-caption">
                 ...
             </div>
@@ -61,7 +67,7 @@
         @foreach (var po in Model.Catproduct)
         {
             <div class="col-md-3 col-sm-3 col-xs-6 goodsdiv" style="margin: 10px 0;">
-                <a href='/Home/PDetail/@po.ObjId'><img src="~/images/goods.jpg" class="imgstyle"></a>
+                <a href='/Home/Detail/@po.ObjId'><img src="~/@po.BigImg" class="imgstyle"></a>
                 <h3>@po.ProductName</h3>
                 <h3>¥@po.Price</h3>
             </div>

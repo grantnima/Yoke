@@ -10,15 +10,19 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Yoke.Infrastructure;
+using Microsoft.AspNetCore.Hosting;
 
 namespace YoKe.Controllers
 {
+    
     public class OrderController : Controller
     {
+        private IHostingEnvironment host = null;
         private readonly YoKeDB_dataContext db;
-        public OrderController(YoKeDB_dataContext _db)
+        public OrderController(YoKeDB_dataContext _db,IHostingEnvironment _host)
         {
             db = _db;
+            host = _host;
         }
         public IActionResult Index()
         {
@@ -126,7 +130,7 @@ namespace YoKe.Controllers
                 pri.PaymentTypeObjId = Request.Form["paymentType"];
                 pri.PostUrl = paymentUrl;
                 pri.ReturnUrl = "http://" + Request.Host + Url.Action("Index", "Payment");
-                pri.CheckValue = RemotePost.getCheckValue(pri.MerId, pri.ReturnUrl, pri.PaymentTypeObjId, pri.Amt,pri.MerTransId);
+                pri.CheckValue = RemotePost.getCheckValue(host.WebRootPath,pri.MerId, pri.ReturnUrl, pri.PaymentTypeObjId, pri.Amt,pri.MerTransId);
                 return View("PayRequest", pri);
             }
             else

@@ -77,7 +77,7 @@ namespace YoKe.Controllers
             foreach (var p in products)
             {
                 Product product = new Product();
-                product= new Product { ProductName = p.ProductName,Price = p.Price};
+                product= new Product { ObjId = p.ObjId, ProductName = p.ProductName,Price = p.Price,BigImg = p.BigImg,Description = p.Description,Feature = p.Feature};
                 pro.Catproduct.Add(product);
             }
             ViewBag.title = typeName;
